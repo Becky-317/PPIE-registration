@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-xl">Registration complete</h1>
+      <p>We've sent you a confirmation email</p>
+      <h2 class="nhsuk-heading-l">What happens next</h2>
+      <p>We'll use the information you've given us to help match you to relevant research opportunities.</p>
+      <p>Don't worry if you do not hear from us straight away. It can take anywhere from a few days to several months to match you to relevant research opportunities. To get more regular updates from us, you can sign up to our newsletter</p>
+      <p>From your <a href="#">account page</a> you can:</p>
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>update your details</li>
+        <li>update your areas of research</li>
+        <li>delete your account</li>
+      </ul>
+      <hr class="nhsuk-section-break nhsuk-section-break--xl nhsuk-section-break--visible">
+      <p>Our newsletter covers a range of interesting news and opportunities about research from around the UK, stay up to date by signing up today!</p>
+       {{ button({
+          text: "Sign up now"
+        }) }}
+      <hr class="nhsuk-section-break nhsuk-section-break--xl nhsuk-section-break--visible">
+      <p>You can find more information about <a href="#">taking part in research</a> by visiting our main website.</p>
+      <p>You can also search for research opportunities near you, hear about the latest health and care discoveries and much more on <a href="#">Be Part of Research</a>.</p>
+    </div>
+  </div>
+{% endblock %}

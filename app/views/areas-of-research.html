@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% from "_components/multiselect-search/macro.njk" import searchableCheckboxes %}
+{% from "button/macro.njk" import button %}
+
+{% block beforeContent %}
+  {{ backLink({
+    href: "illness-disability.html",
+    text: "Back"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+<form action="/areas-of-research.html" method="post" novalidate>
+<h1 class="nhsuk-heading-l"> Which health conditions can we contact you about?</h1>
+<p>The health conditions you choose in this section will be used to match you to suitable research studies using our service. We will send you information on how you can take part.</p>
+<p>You can choose as many conditions or disease areas as you would like. </p>
+<p><b>Tip</b> Once you have chosen a condition, you will need to clear the search bar to choose more conditions.</p>
+<p>If you are using a keyboard to move through the registration process, you will need to use the tab key to move through the options in the drop-down list on this section. Use the escape key to close this</p>
+<br></br>
+<h1 class="nhsuk-heading-m"> How to get started</h1>
+<p> Use the search tool to look for conditions you’re interested in.</p>
+<p>You might select a health condition you already have like diabetes or heart disease. Or you might have a family member or friend who has a condition, so you could choose those. Many studies do not require you to have a specific condition to take part, so we need people without conditions too.</p>
+<p>If there aren’t any health conditions you’re interested in but would still like to take part, then select ‘healthy volunteer’. If you do not select anything, you will not be contacted about any studies</p>
+
+  {{ searchableCheckboxes({
+    id: "research-areas",
+    name: "researchAreas",
+    selectedValues: data.researchAreas,
+    label: { text: "Areas of research" },
+    showAllOptions: true,
+    items: data.areas_of_research
+  
+  }) }}
+{{ button({
+          text: "Continue"
+        }) }}
+</form>
+  
+{% endblock %}

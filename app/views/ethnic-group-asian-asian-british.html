@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% from "back-link/macro.njk" import backLink %}
+{% from "button/macro.njk" import button %}
+{% from "radios/macro.njk" import radios %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block beforeContent %}
+  {{ backLink({
+    href: "#",
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <form action="/ethnic-group-asian-asian-british.html" method="post" novalidate>
+
+        {{ radios({
+          fieldset: {
+            legend: {
+              text: "Which of the following best describes your Asian or Asian British background?",
+              size: "l",
+              isPageHeading: true
+            }
+          },
+          idPrefix: "ethnicbackground",
+          name: "ethnicBackground",
+    
+          items: [
+            {
+              value: "Bangladeshi",
+              text: "Bangladeshi",
+              checked: data.ethnicBackground == "Bangladeshi"
+            },
+            {
+              value: "Chinese",
+              text: "Chinese",
+              checked: data.ethnicBackground == "Chinese"
+
+            },
+            {
+              value: "Indian",
+              text: "Indian",
+              checked: data.ethnicBackground == "Indian"
+            },
+            {
+              value: "Pakistani",
+              text: "Pakistani",
+              checked: data.ethnicBackground == "Pakistani"
+            },
+             {
+              value: "Another Asian or Asian British background",
+              text: "Another Asian or Asian British background",
+              checked: data.ethnicBackground == "Another Asian or Asian British background"
+            }
+          ]
+        }) }}
+        {% from "details/macro.njk" import details %}
+
+
+{% set dummyNhsNumber = "999 123 4567" %}
+
+{% call details({
+  summary: "Why we ask this question"
+}) %}
+<p>Many studies want to make sure they have a representative sample of the population taking part. in research studies, and some may be looking for people from specific ethnic groups.</p>
+  <p>If we find that some ethnic groups are under represented, we may need to adjust our recruitment strategy when people are signing up to be contacted about research we will look at how to improve this.</p>
+{% endcall %}
+
+
+        {{ button({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
+

@@ -1,0 +1,226 @@
+{% extends "layout.html" %}
+
+{% from "button/macro.njk" import button %}
+{% from "summary-list/macro.njk" import summaryList %}
+
+{% macro summaryText(value) -%}
+  {%- if value is string -%}
+    {{ value }}
+  {%- elif value and value is iterable -%}
+    {{ value | join(", ") }}
+  {%- else -%}
+    Not provided
+  {%- endif -%}
+{%- endmacro %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-l">Check your answers before sending your application</h1>
+
+      <h2 class="nhsuk-heading-m">
+        Personal details
+      </h2>
+
+      {% set homeAddress %}
+        {%- if data.addressLine1 %}{{ data.addressLine1 }}<br>{% endif -%}
+        {%- if data.addressLine2 %}{{ data.addressLine2 }}<br>{% endif -%}
+        {%- if data.addressLine3 %}{{ data.addressLine3 }}<br>{% endif -%}
+        {%- if data.townOrCity %}{{ data.townOrCity }}<br>{% endif -%}
+        {%- if data.postcode %}{{ data.postcode }}{% endif -%}
+        {%- if not data.addressLine1 and not data.addressLine2 and not data.addressLine3 and not data.townOrCity and not data.postcode %}Not provided{% endif -%}
+      {% endset %}
+
+      {% set researchAreas %}
+        {{- summaryText(data.researchAreas) -}}
+      {% endset %}
+
+      {{ summaryList({
+        rows: [
+          {
+            key: {
+              text: "Home address"
+            },
+            value: {
+              html: homeAddress | trim
+            },
+            actions: {
+              items: [
+                {
+                  href: "what-is-your-home-address.html",
+                  text: "Change",
+                  visuallyHiddenText: "home address"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Phone number"
+            },
+            value: {
+              text: summaryText(data["mobile-number"] or data["landline-number"])
+            },
+            actions: {
+              items: [
+                {
+                  href: "phone-number",
+                  text: "Change",
+                  visuallyHiddenText: "Phone number"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Sex registered at birth"
+            },
+            value: {
+              text: summaryText(data.sexGender)
+            },
+            actions: {
+              items: [
+                {
+                  href: "sex-and-gender.html",
+                  text: "Change",
+                  visuallyHiddenText: "Sex registered at birth"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Gender identity same as sex registered at birth"
+            },
+            value: {
+              text: summaryText(data.genderIdentity)
+            },
+            actions: {
+              items: [
+                {
+                  href: "sex-and-gender.html",
+                  text: "Change",
+                  visuallyHiddenText: "Gender identity same as sext registered at birth"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Ethnic group"
+            },
+            value: {
+              text: summaryText(data.ethnicGroup)
+            },
+            actions: {
+              items: [
+                {
+                  href: "ethnic-group.html",
+                  text: "Change",
+                  visuallyHiddenText: "Ethnic group"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Ethnic background"
+            },
+            value: {
+              text: summaryText(data.ethnicBackground)
+            },
+            actions: {
+              items: [
+                {
+                  href: "ethnic-group.html",
+                  text: "Change",
+                  visuallyHiddenText: "Ethnic Background"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Long-term conditions or illness"
+            },
+            value: {
+              text: summaryText(data.longtermIllness)
+            },
+            actions: {
+              items: [
+                {
+                  href: "illness-disability",
+                  text: "Change",
+                  visuallyHiddenText: "Long term illness"
+                }
+              ]
+            }
+          },
+           {
+            key: {
+              text: "Reduced ability to carry out daily activities"
+            },
+            value: {
+              text: summaryText(data.reduceAbility)
+            },
+            actions: {
+              items: [
+                {
+                  href: "illness-disability-conditions.html",
+                  text: "Change",
+                  visuallyHiddenText: "Reduced ability to carry out daily activities"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Areas of Research"
+            },
+            value: {
+              text: researchAreas | trim
+            },
+            actions: {
+              items: [
+                {
+                  href: "areas-of-research",
+                  text: "Change",
+                  visuallyHiddenText: "Areas of research"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Public health involvement"
+            },
+            value: {
+              text: summaryText(data.publichealthInvolvement)
+            },
+            actions: {
+              items: [
+                {
+                  href: "public-health-involvement.html",
+                  text: "Change",
+                  visuallyHiddenText: "Public health involvement"
+                }
+              ]
+            }
+          }
+
+        ]
+      }) }}
+
+      <p>
+        If you need to change any of your answers later, you can do this in your Be Part of Research account.</p>
+
+      <form action="/check-answers.html" method="post" novalidate>
+        {{ button({
+          text: "Confirm and send"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

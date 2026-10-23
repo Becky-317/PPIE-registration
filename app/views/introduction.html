@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% from "breadcrumb/macro.njk" import breadcrumb %}
+{% from "button/macro.njk" import button %}
+{% from "inset-text/macro.njk" import insetText %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+{% set dummyNhsNumber = "999 123 4567" %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "#",
+        text: "Home"
+      },
+      {
+        href: "#",
+        text: "Introduction"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-xl">Be Part of Research</h1>
+      <p>Use Be Part of Research to:
+        <ul>
+          <li>find out about UK health and care research that’s relevant to you</li>
+          <li>get invitations to take part in approved health and care studies at local hospitals, GP practices, care settings or at home</li>
+          <li>help researchers improve treatments, the NHS, public health and care</li>
+        </ul>
+      </p>
+      <p>You can register with Be Part of Research if you:</p>
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>have access to an email address</li>
+        <li>are 18 or over</li>
+        <li>live in England, Wales, Scotland or Northern Ireland</li>
+      </ul>
+      <p>You do not need to have a health condition to register.</p>
+
+      {{ button({
+        text: "Start now",
+        href: "start-page.html"
+      }) }}
+
+      <p>By using this service you agree to our <a href="#">sign in</a> 
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% from "back-link/macro.njk" import backLink %}
+{% from "button/macro.njk" import button %}
+{% from "radios/macro.njk" import radios %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block beforeContent %}
+  {{ backLink({
+    href: "ethnic-group.html",
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <form action="/illness-disability.html" method="post" novalidate>
+
+    {% from "radios/macro.njk" import radios %}
+
+{{ radios({
+  fieldset: {
+    legend: {
+      text: "Do you have any health conditions that are expected to last 12 months or more?",
+      size: "l",
+      isPageHeading: true
+    }
+  },
+  hint: {
+    text: "This includes an physical or mental health condition and illness"
+  },
+  idPrefix: "longtermillness",
+  name: "longtermIllness",
+  items: [
+    {
+      value: "Yes",
+      text: "Yes",
+      checked: data.longtermIllness == "Yes"
+    },
+    {
+      value: "No",
+      text: "No",
+      checked: data.longtermIllness == "No"
+    },
+    {
+      divider: "or"
+    },
+    {
+      value: "Prefer not to say",
+      text: "Prefer not to say",
+      checked: data.longtermIllness == "Prefer-not-to-say"
+    }
+  ]
+}) }}
+
+{% from "details/macro.njk" import details %}
+
+{% set dummyNhsNumber = "999 123 4567" %}
+
+{% call details({
+  summary: "Why we ask this question"
+}) %}
+  <p>Some studies will require volunteers with disabilities, other studies want to make sure they have a representative sample of the population taking part in research studies. We may use this information when contacting you about studies you may be interested in.</p>
+  <p>If we find that people with disabilities are under represented in signing up to be contacted about research we will look at how to improve this.</p>
+{% endcall %}
+
+
+        {{ button({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

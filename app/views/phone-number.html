@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+{% from "back-link/macro.njk" import backLink %}
+{% from "button/macro.njk" import button %}
+{% from "input/macro.njk" import input %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block beforeContent %}
+  {{ backLink({
+    href: "what-is-your-home-address.html",
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <h1 class="nhsuk-heading-l">
+        What is your phone number? (optional)
+      </h1>
+      <p>You may provide either a mobile or landline number if you choose.</p>
+
+      <form action="/phone-number.html" method="post" novalidate>
+
+        {{ input({
+          label: {
+            text: "UK mobile phone number",
+            size: "s"
+          },
+          id: "mobile-number",
+          name: "mobile-number",
+          value: data["mobile-number"],
+          width: 20,
+          type: "tel",
+          autocomplete: "tel"
+        }) }}
+
+          {{ input({
+          label: {
+            text: "UK Landline number",
+            size: "s"
+          },
+          id: "landline-number",
+          name: "landline-number",
+          value: data["landline-number"],
+          width: 20,
+          type: "tel",
+          autocomplete: "tel"
+        }) }}
+
+{% from "details/macro.njk" import details %}
+
+
+
+{% call details({
+  summary: "Why we ask this question"
+}) %}
+  <p>Study teams may need to have a contact phone number for volunteers. Some studies will offer text messages as a way to contact volunteers, they will need your number if you choose for them to contact you this way.</p>
+{% endcall %}
+
+         
+         {{ button({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

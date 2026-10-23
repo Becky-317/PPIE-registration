@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+
+{% from "back-link/macro.njk" import backLink %}
+{% from "button/macro.njk" import button %}
+{% from "input/macro.njk" import input %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block beforeContent %}
+  {{ backLink({
+    href: "mobile-number.html",
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <h1 class="nhsuk-heading-l">
+        Your details
+      </h1>
+      <p>You've told us you are the carer. We need your details.</p>
+
+      <form action="/what-is-your-home-address.html" method="post" novalidate>
+
+        {{ input({
+          label: {
+            text: "Address line 1",
+            size: "s"
+          },
+          id: "address-line-1",
+          name: "addressLine1",
+          value: data.addressLine1
+        }) }}
+
+        {{ input({
+          label: {
+            text: "Address line 2",
+            size: "s"
+          },
+          id: "address-line-2",
+          name: "addressLine2",
+          value: data.addressLine2
+        }) }}
+
+        {{ input({
+          label: {
+            text: "Address line 3",
+            size: "s"
+          },
+          id: "address-line-3",
+          name: "addressLine3",
+          value: data.addressLine3
+        }) }}
+
+        {{ input({
+          label: {
+            text: "Town or city",
+            size: "s"
+          },
+          id: "town-or-city",
+          name: "townOrCity",
+          value: data.townOrCity
+        }) }}
+
+        {{ input({
+          label: {
+            text: "Postcode",
+            size: "s"
+          },
+          id: "postcode",
+          name: "postcode",
+          value: data.postcode,
+          width: 20,
+          autocomplete: "postal-code"
+        }) }}
+       
+{% from "details/macro.njk" import details %}
+
+{% set dummyNhsNumber = "999 123 4567" %}
+
+{% call details({
+  summary: "Why we ask this question"
+}) %}
+  <p>Study teams need a postal address to send you communications by post, if you choose for them to contact you this way.
+   <p>Some studies only recruit from specific locations, we may use this information when contacting you about studies you may be interested in.</p>
+  
+{% endcall %}
+
+         {{ button({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

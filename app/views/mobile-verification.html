@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% from "back-link/macro.njk" import backLink %}
+{% from "button/macro.njk" import button %}
+{% from "input/macro.njk" import input %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block beforeContent %}
+  {{ backLink({
+    href: "#",
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <h1 class="nhsuk-heading-l">
+        Enter the code that we have sent to your mobile number
+      </h1>
+      <p>We have sent a 6 digit security code to your mobile number. Please enter the code below to confirm your mobile number.</p>
+      <form action="/form-handler" method="post" novalidate>
+
+        {{ input({
+          label: {
+            text: "6 digit security code",
+            size: "s"
+          },
+          id: "security-code",
+          name: "security-code",
+          width: 20,
+          type: "tel",
+          autocomplete: "tel"
+        }) }}
+
+         
+        {{ button({
+          text: "Continue",
+          href: "what-is-your-home-address.html"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

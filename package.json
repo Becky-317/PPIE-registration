@@ -1,0 +1,21 @@
+{
+  "name": "Be Part of Research-PPIE",
+  "description": "Testing the effectiveness of the new PPIE option",
+  "main": "app.js",
+  "scripts": {
+    "start": "node .",
+    "watch": "echo 'run this instead: npm start'",
+    "build": "npm run build"
+  },
+  "author": "https://github.com/nhsuk/",
+  "license": "MIT",
+  "dependencies": {
+    "nhsuk-frontend": "^10.6.1",
+    "nhsuk-prototype-kit": "^8.5.1"
+  },
+  "devDependencies": {
+  },
+  "engines": {
+    "node": "^22.11.0 || ^24.11.0"
+  }
+}

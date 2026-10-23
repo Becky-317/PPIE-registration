@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+
+{% from "back-link/macro.njk" import backLink %}
+{% from "button/macro.njk" import button %}
+{% from "input/macro.njk" import input %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block beforeContent %}
+  {{ backLink({
+    href: "#",
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <h1 class="nhsuk-heading-l">
+       How would you describe your background? (optional)
+      </h1>
+      
+      <form action="/another-ethnic-background.html" method="post" novalidate>
+
+            {{ input({
+            id: "ethnicbackground",
+            name: "ethnicBackground",
+            value: data.ethnicBackground,
+            label: {
+            isPageHeading: true
+            }
+            
+}) }}
+        {{ button({
+        text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

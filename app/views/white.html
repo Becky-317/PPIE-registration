@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% from "back-link/macro.njk" import backLink %}
+{% from "button/macro.njk" import button %}
+{% from "radios/macro.njk" import radios %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block beforeContent %}
+  {{ backLink({
+    href: "#",
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <form action="/white.html" method="post" novalidate>
+
+        {{ radios({
+          fieldset: {
+            legend: {
+              text: "Which of the following best describes your White ethnic group background?",
+              size: "l",
+              isPageHeading: true
+            }
+          },
+          idPrefix: "ethnicbackground",
+          name: "ethnicBackground",
+          items: [
+            {
+              value: "British, English, Northern Irish, Scottish or Welsh",
+              text: "British, English, Northern Irish, Scottish or Welsh",
+              checked: data.ethnicBackground == "British, English, Northern Irish, Scottish or Welsh"
+            },
+            {
+              value: "Irish",
+              text: "Irish",
+              checked: data.ethnicBackground == "Irish"
+            },
+            {
+              value: "Irish Traveller",
+              text: "Irish Traveller",
+              checked: data.ethnicBackground == "Irish Traveller"
+          
+            },
+            {
+              value: "Roma",
+              text: "Roma",
+              checked: data.ethnicBackground == "Roma"
+            },
+             {
+              value: "Another White background",
+              text: "Another White background",
+              checked: data.ethnicBackground == "Another White background"
+            }
+          ]
+        }) }}
+        {% from "details/macro.njk" import details %}
+
+        {% from "input/macro.njk" import input %}
+
+
+
+{% set dummyNhsNumber = "999 123 4567" %}
+
+{% call details({
+  summary: "Why we ask this question"
+}) %}
+<p>Many studies want to make sure they have a representative sample of the population taking part. in research studies, and some may be looking for people from specific ethnic groups.</p>
+  <p>If we find that some ethnic groups are under represented, we may need to adjust our recruitment strategy when people are signing up to be contacted about research we will look at how to improve this.</p>
+{% endcall %}
+
+
+        {{ button({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+

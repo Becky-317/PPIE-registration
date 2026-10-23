@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% from "back-link/macro.njk" import backLink %}
+{% from "button/macro.njk" import button %}
+{% from "radios/macro.njk" import radios %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block beforeContent %}
+  {{ backLink({
+    href: "#",
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <form action="/mixed-or-multiple-ethnic-group.html" method="post" novalidate>
+
+        {{ radios({
+          fieldset: {
+            legend: {
+              text: "Which of the following best describes your Mixed or multiple ethnic group background?",
+              size: "l",
+              isPageHeading: true
+            }
+          },
+            idPrefix: "ethnicbackground",
+            name: "ethnicBackground",
+          items: [
+            {
+              value: "Asian and White",
+              text: "Asian and White",
+              checked: data.ethnicBackground == "Asian and White"
+              
+            },
+            {
+              value: "Black African and White",
+              text: "Black African and White",
+              checked: data.ethnicBackground == "Black African and White"
+            },
+            {
+              value: "Black Caribbean and White",
+              text: "Black Caribbean and White",
+              checked: data.ethnicBackground == "Black Caribbean and White"
+            },
+            {
+              value: "Another mixed background",
+              text: "Another mixed background",
+              checked: data.ethnicBackground == "Another mixed background"
+            }
+          ]
+        }) }}
+        {% from "details/macro.njk" import details %}
+
+{% set dummyNhsNumber = "999 123 4567" %}
+
+{% call details({
+  summary: "Why we ask this question"
+}) %}
+<p>Many studies want to make sure they have a representative sample of the population taking part. in research studies, and some may be looking for people from specific ethnic groups.</p>
+  <p>If we find that some ethnic groups are under represented, we may need to adjust our recruitment strategy when people are signing up to be contacted about research we will look at how to improve this.</p>
+{% endcall %}
+
+
+        {{ button({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
+

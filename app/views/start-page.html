@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% from "breadcrumb/macro.njk" import breadcrumb %}
+{% from "button/macro.njk" import button %}
+{% from "inset-text/macro.njk" import insetText %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+{% set dummyNhsNumber = "999 123 4567" %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "#",
+        text: "Home"
+      },
+      {
+        href: "introduction.html",
+        text: "Introduction"
+      },
+      {
+        href: "#",
+        text: "Start page"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-xl">Register with Be Part of research</h1>
+      <p>To register, we’ll ask you to:</p>
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>create an account using your NHS login or email address</li>
+        <li>answer a few questions about yourself and how we can contact you</li>
+        <li>tell us the research areas and health conditions you’re interested in</li>
+      </ul>
+      <p>Once registered, we’ll use this information to email you about relevant research opportunities.</p>
+      
+      {% set insetTextHtml %}
+        <p>You can use NHS login if you live in England or Wales. If you choose this option, you’ll need to use it each time you log in to your account.</p>
+      {% endset %}
+
+      {{ insetText({
+        html: insetTextHtml | safe
+      }) }}
+
+      {% from "button/macro.njk" import button %}
+
+  {{ button({
+    text: "Continue with email address",
+    href: "name.html",
+    variant: ".nhsukbutton"
+  }) }}
+
+<p>If you already have an account, you can <a href="#">sign in</a> 
+
+{% endblock %}

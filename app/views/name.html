@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+
+{% from "back-link/macro.njk" import backLink %}
+{% from "button/macro.njk" import button %}
+{% from "input/macro.njk" import input %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block beforeContent %}
+  {{ backLink({
+    href: "start-page.html",
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <h1 class="nhsuk-heading-l">
+        What's your name?
+      </h1>
+      
+      <form action="/form-handler" method="post" novalidate>
+
+        {{ input({
+          label: {
+            text: "First name",
+            size: "s"
+          },
+          id: "example",
+          name: "example"
+        }) }}
+
+        {{ input({
+          label: {
+            text: "Last name",
+            size: "s"
+          },
+          id: "example1",
+          name: "example1"
+        }) }}
+
+        {{ button({
+        text: "Continue",
+        href: "date-of-birth.html"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
+

@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+
+{% from "back-link/macro.njk" import backLink %}
+{% from "button/macro.njk" import button %}
+{% from "radios/macro.njk" import radios %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block beforeContent %}
+  {{ backLink({
+    href: "phone-number.html",
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-l">
+        Sex and gender identity
+      </h1>
+
+      <form action="/sex-and-gender.html" method="post" novalidate>
+
+      {% from "radios/macro.njk" import radios %}
+      {% from "fieldset/macro.njk" import fieldset %}
+      {% from "hint/macro.njk" import hint %}
+
+        {{ radios({
+          fieldset: {
+          legend: {
+          text: "What is your sex?",
+      size: "l",
+      isPageHeading: true
+    }
+  },
+  hint: {
+    text: "This question refers to your sex registered at birth."
+  },
+  idPrefix: "sex-gender",
+  name: "sexGender",
+  items: [
+    {
+      value: "Female",
+      text: "Female",
+      checked: data.sexGender == "Female"
+    },
+    {
+      value: "Male",
+      text: "Male",
+      checked: data.sexGender == "Male"
+    }
+  ]
+}) }}
+
+{% from "radios/macro.njk" import radios %}
+{% from "fieldset/macro.njk" import fieldset %}
+{% from "hint/macro.njk" import hint %}
+
+{{ radios({
+  fieldset: {
+    legend: {
+      text: "Is the gender you identify with the same as your sex registered at birth?",
+      size: "l",
+      isPageHeading: true
+    }
+  },
+  idPrefix: "gender-identity",
+  name: "genderIdentity",
+  items: [
+    {
+      value: "yes",
+      text: "Yes",
+      checked: data.genderIdentity == "Yes"
+    },
+    {
+      value: "no",
+      text: "No",
+      checked: data.genderIdentity == "No"
+    },
+    {
+      divider: "or"
+    },
+    {
+      value: "Prefer not to say",
+      text: "Prefer not to say",
+      checked: data.genderIdentity == "Prefer not to say"
+    }
+  ]
+}) }}
+         {{ button({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% from "back-link/macro.njk" import backLink %}
+{% from "button/macro.njk" import button %}
+{% from "input/macro.njk" import input %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block beforeContent %}
+  {{ backLink({
+    href: "create-password.html",
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+   {% from "checkboxes/macro.njk" import checkboxes %}
+ <h1 class="nhsuk-heading-l">
+      Consent to process your data and be contacted by Be Part of Research
+  </h1>
+  <p>By consenting and registering for the service, you are giving permission for any information you share to be processed by Be Part of Research</p>
+<p> It is a service managed and operated by the National Institute for Health and Care Research (NIHR) Research Delivery Network Coordinating Centre (RDNCC)</p>
+<p>The Data Controller for this service is the Department of Health and Social Care (DHSC)</p>
+<p> Please read our <a href =”#” >Privacy Policy</a> to understand more about:</p>
+<ul class="nhsuk-list nhsuk-list--bullet">
+  <li>the RDNCC and Be Part of Research</li>
+  <li>the information we collect, how and why we use it and who we share it with</li>
+  <li>how we store and protect your information and your rights over your information</li>
+  <li>how to withdraw your consent at any time</li>
+</ul>
+<p>Your information will not be stored if your account isn’t verified.</p>
+<p>If you do not consent to share your information you will not be able to use this service</p></p>
+{{ checkboxes({
+  idPrefix: "example",
+  name: "example",
+  items: [
+    {
+      value: "consent",
+      text: "I confirm that I have read and understood the Be Part of Research Privacy Policy"
+    }
+   
+  ]
+}) }}
+ {{ button({
+          text: "Yes, I consent and wish to register now",
+          href: "mobile-number.html"
+        }) }}
+
+<p>If you do not consent, you can <a href="#">cancel this registration</a></p>
+   
+{% endblock %}
+
+
+
+
