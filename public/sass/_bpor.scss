@@ -1,0 +1,190 @@
+// Fonts
+
+@font-face {
+  font-family: "Inclusive Sans";
+  src: url("/assets/fonts/InclusiveSans-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Archia";
+  src: url("/assets/fonts/archia-regular-webfont.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Colour variables
+
+$bpor-colour-primary-coral: #FF4D56;
+$bpor-colour-primary-white: #FFFFFF;
+$bpor-colour-primary-navy: #172862;
+$bpor-colour-primary-off-black: #3C3C3B;
+
+$bpor-colour-secondary-groveblue: #C7E9FF;
+$bpor-colour-secondary-uniformlilac: #C4C5FF;
+$bpor-colour-secondary-pinkquartz: #FFD1E0;
+$bpor-colour-secondary-sunshineyellow: #FFE626;
+$bpor-colour-secondary-blueflame: #0051C2;
+$bpor-colour-secondary-twilight: #3D42A1;
+
+$bpor-colour-error: $bpor-colour-primary-coral;
+$bpor-colour-focus: $bpor-colour-secondary-sunshineyellow;
+$bpor-colour-success: #28A745;
+
+$bpor-colour-text-heading: #1C285E;
+$bpor-colour-text-default: $bpor-colour-primary-off-black;
+$bpor-colour-background-text-captions: #505A5F;
+
+$bpor-colour-link: #1C285E;
+$bpor-colour-link-hover: $bpor-colour-secondary-blueflame;
+$bpor-colour-link-visited: $bpor-colour-secondary-twilight;
+$bpor-colour-link-active: $bpor-colour-primary-navy;
+
+$bpor-colour-background-default: #FAF4EB;
+$bpor-colour-background-secondary: $bpor-colour-primary-white;
+
+
+//Header
+.nhsuk-header {
+  background-color: white;
+}
+
+.nhsuk-header__service-name {
+  color: $bpor-colour-primary-white;
+  font-family: "Archia", sans-serif;
+  font-weight: 700;
+}
+
+.nhsuk-footer {
+  background-color: $bpor-colour-primary-navy;
+  color: $bpor-colour-primary-white;
+  border-top: none;
+  
+  &__list-item-link {
+    color: $bpor-colour-primary-white;
+
+    &:hover {
+      color: $bpor-colour-primary-white;
+      text-decoration: none;
+    }
+  }
+}
+
+
+
+
+// Typography
+
+body {
+  font-family: "Inclusive Sans", sans-serif !important;
+  color: $bpor-colour-text-default !important;
+  background-color: $bpor-colour-background-default !important;
+}
+
+
+.label {
+    font-family: "Inclusive Sans", sans-serif;
+    font-weight: 400 !important;
+    color: $bpor-colour-text-default;
+}
+
+h1,h2,h3 { 
+    color: $bpor-colour-text-heading;
+    font-family: "Archia", sans-serif; 
+    font-weight: 700 !important;
+    line-height: 1.25 !important;
+}
+
+h4,h5 {
+    color: $bpor-colour-text-heading;
+    font-family: "Inclusive Sans", sans-serif;
+    font-weight: 700 !important;
+    line-height: 1.25 !important;
+}
+
+a {
+    color: $bpor-colour-link;
+    text-decoration: underline;
+    font-weight: 700 !important;
+
+    &:hover {
+        color: $bpor-colour-link-hover;
+        text-decoration: none;
+        
+    }
+
+    &:visited {
+        color: $bpor-colour-link-visited;
+    }
+
+    &:active {
+        color: $bpor-colour-link-active;
+    }
+
+    &:focus {
+        background: $bpor-colour-focus;
+        outline:none;
+        border-bottom: 1.5px solid black;
+
+    }
+}
+
+.nhsuk-details__summary-text,
+.nhsuk-details__summary::before {
+    color: $bpor-colour-link;
+}
+
+.nhsuk-details__summary:hover .nhsuk-details__summary-text,
+.nhsuk-details__summary:hover::before {
+    color: $bpor-colour-secondary-blueflame;
+}
+
+// Components
+
+.bpor-panel {
+    background-color: $bpor-colour-secondary-blueflame;
+    .nhsuk-panel__heading {
+        font-family: "Inclusive Sans", sans-serif;
+        color: $bpor-colour-primary-white;
+        text-decoration: underline;
+    }
+}
+
+.insetText {
+    border-left: 8px solid $bpor-colour-primary-navy;
+}
+
+.nhsuk-button {
+    background-color: $bpor-colour-secondary-blueflame;
+    color: $bpor-colour-primary-white;
+
+    &:hover {
+        background-color: $bpor-colour-secondary-sunshineyellow;
+        border-color: black;
+        color: $bpor-colour-primary-off-black; 
+    }
+
+   &--secondary {
+    background-color: $bpor-colour-secondary-groveblue;
+    color: $bpor-colour-text-heading;
+
+    &::before {
+        border-color: $bpor-colour-primary-coral;
+    }
+}
+}
+
+.nhsuk-button--secondary:not(:focus):not(:active)::before {
+    border-color: $bpor-colour-primary-navy;
+}
+
+.nhsuk-button--secondary:not(:focus):not(:active)::after {
+    box-shadow: 0 4px 0 $bpor-colour-primary-navy;
+}
+
+.nhsuk-inset-text {
+    border-left: 8px solid $bpor-colour-primary-navy;
+}
