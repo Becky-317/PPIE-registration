@@ -167,13 +167,26 @@ a {
         color: $bpor-colour-primary-off-black; 
     }
 
+    &:active {
+        background-color: $bpor-colour-primary-navy;
+        color: $bpor-colour-primary-white;
+    }
+
    &--secondary {
     background-color: $bpor-colour-secondary-groveblue;
     color: $bpor-colour-text-heading;
 
+   &:active {
+    background-color: $bpor-colour-primary-navy;
+    color: $bpor-colour-primary-white;
+
+   }
+
     &::before {
-        border-color: $bpor-colour-primary-coral;
+        border-color: $bpor-colour-primary-off-black;
     }
+
+    
 }
 }
 
