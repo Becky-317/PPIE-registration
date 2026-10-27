@@ -35,6 +35,13 @@ router.post('/check-answers.html', function (req, res) {
   res.redirect('/registration-completed.html')
 })
 
+router.post('/illness-disability.html', function (req, res) {
+  res.redirect('/illness-disability-conditions.html')
+})
+
+router.post('/illness-disability-conditions.html', function (req, res) {
+  res.redirect('/areas-of-research.html')
+})
 
 
 
