@@ -93,6 +93,16 @@
           text: "Continue"
         }) }}
       </form>
+      {% from "details/macro.njk" import details %}
+
+{% set dummyNhsNumber = "999 123 4567" %}
+
+{% call details({
+  summary: "Why we ask this question"
+}) %}
+  <p> Some studies can only include people of a specific sex, or may be focused on people whose gender differs from their  assigned sex at birth. We may use this information when contacting you about studies you may be interested in</p>
+<p>We’re also asking this so we can make sure there is a mix of different people taking part in research if they wish to and look to improve our service where our data shows this may not be the case.</p>
+{% endcall %}
     </div>
   </div>
 
