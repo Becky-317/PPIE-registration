@@ -203,8 +203,54 @@ a {
 }
 
 
-.logo:hover, .logo:focus 
-{
-    border: 2px black;
-    outline: 4px $bpor-colour-focus
+.nhsuk-header__service-logo {
+  display: inline-flex;
+  position: relative;
+  border-radius: 4px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+
+  &:hover,
+  &:focus-within {
+    outline: 3px solid $bpor-colour-focus;
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+
+  &:focus-visible {
+    outline: 3px solid $bpor-colour-focus;
+    outline-offset: 4px;
+    box-shadow: 0 0 0 3px rgba(23, 40, 98, 0.2);
+  }
+
+  img {
+    display: block;
+    max-height: 40px;
+    width: auto;
+    transition: opacity 0.2s ease, filter 0.2s ease, transform 0.2s ease;
+  }
+
+  &:hover img,
+  &:focus-within img {
+    opacity: 0.9;
+    filter: brightness(1.05);
+    transform: translateY(-1px);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 3px;
+    background: $bpor-colour-focus;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  &:hover::after,
+  &:focus-within::after,
+  &:focus-visible::after {
+    opacity: 1;
+  }
 }
