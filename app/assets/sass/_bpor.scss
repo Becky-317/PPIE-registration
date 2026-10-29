@@ -201,3 +201,10 @@ a {
 .nhsuk-inset-text {
     border-left: 8px solid $bpor-colour-primary-navy;
 }
+
+
+.logo:hover, .logo:focus 
+{
+    border: 2px black;
+    outline: 4px $bpor-colour-focus
+}
