@@ -1,0 +1,348 @@
+// Fonts
+
+@font-face {
+  font-family: "Inclusive Sans";
+  src: url("/assets/fonts/InclusiveSans-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Archia";
+  src: url("/assets/fonts/archia-bold-webfont.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Colour variables
+
+$bpor-colour-primary-coral: #FF4D56;
+$bpor-colour-primary-white: #FFFFFF;
+$bpor-colour-primary-navy: #172862;
+$bpor-colour-primary-off-black: #3C3C3B;
+
+$bpor-colour-secondary-groveblue: #C7E9FF;
+$bpor-colour-secondary-uniformlilac: #C4C5FF;
+$bpor-colour-secondary-pinkquartz: #FFD1E0;
+$bpor-colour-secondary-sunshineyellow: #FFE626;
+$bpor-colour-secondary-blueflame: #0051C2;
+$bpor-colour-secondary-twilight: #3D42A1;
+
+$bpor-colour-error: $bpor-colour-primary-coral;
+$bpor-colour-focus: $bpor-colour-secondary-sunshineyellow;
+$bpor-colour-success: #28A745;
+
+$bpor-colour-text-heading: #1C285E;
+$bpor-colour-text-default: $bpor-colour-primary-off-black;
+$bpor-colour-background-text-captions: #505A5F;
+
+$bpor-colour-link: #1C285E;
+$bpor-colour-link-hover: $bpor-colour-secondary-blueflame;
+$bpor-colour-link-visited: $bpor-colour-secondary-twilight;
+$bpor-colour-link-active: $bpor-colour-primary-navy;
+
+$bpor-colour-background-default: #FAF4EB;
+$bpor-colour-background-secondary: $bpor-colour-primary-white;
+
+
+//Header
+.nhsuk-header {
+  background-color: white;
+}
+
+.nhsuk-header__service-name {
+  color: $bpor-colour-primary-white;
+  font-family: "Archia", sans-serif;
+  font-weight: 700;
+}
+
+.nhsuk-footer {
+  background-color: $bpor-colour-primary-navy;
+  color: $bpor-colour-primary-white;
+  border-top: none;
+  
+  &__list-item-link {
+    color: $bpor-colour-primary-white;
+
+    &:hover {
+      color: $bpor-colour-primary-white;
+      text-decoration: none;
+    }
+  }
+}
+
+
+
+
+// Typography
+
+body {
+  font-family: "Inclusive Sans", sans-serif !important;
+  color: $bpor-colour-text-default !important;
+  background-color: $bpor-colour-background-default !important;
+}
+
+
+.label {
+    font-family: "Inclusive Sans", sans-serif;
+    font-weight: 400 !important;
+    color: $bpor-colour-text-default;
+}
+
+h1,h2,h3 { 
+    color: $bpor-colour-text-heading;
+    font-family: "Archia", sans-serif; 
+    font-weight: 700 !important;
+    line-height: 1.25 !important;
+}
+
+h4,h5 {
+    color: $bpor-colour-text-heading;
+    font-family: "Inclusive Sans", sans-serif;
+    font-weight: 700 !important;
+    line-height: 1.25 !important;
+}
+
+a {
+    color: $bpor-colour-link;
+    text-decoration: underline;
+    font-weight: 700 !important;
+
+    &:hover {
+        color: $bpor-colour-link-hover;
+        text-decoration: none;
+        
+    }
+
+    &:visited {
+        color: $bpor-colour-link-visited;
+    }
+
+    &:active {
+        color: $bpor-colour-link-active;
+    }
+
+    &:focus {
+        background: $bpor-colour-focus;
+        outline:none;
+        border-bottom: 1.5px solid black;
+
+    }
+}
+
+.nhsuk-details__summary-text,
+.nhsuk-details__summary::before {
+    color: $bpor-colour-link;
+}
+
+.nhsuk-details__summary:hover .nhsuk-details__summary-text,
+.nhsuk-details__summary:hover::before {
+    color: $bpor-colour-secondary-blueflame;
+}
+
+.nhsuk-fieldset__legend,
+.nhsuk-fieldset__legend--l {
+  font-family: "Archia", sans-serif;
+  font-weight: 700 !important;
+  color: $bpor-colour-text-heading;
+}
+
+// Components
+
+.bpor-panel {
+    background-color: $bpor-colour-secondary-blueflame;
+    .nhsuk-panel__heading {
+        font-family: "Archia", sans-serif;
+        color: $bpor-colour-primary-white;
+        text-decoration: none;
+    }
+}
+
+.insetText {
+    border-left: 8px solid $bpor-colour-primary-navy;
+}
+
+.nhsuk-button {
+    background-color: $bpor-colour-secondary-blueflame;
+    color: $bpor-colour-primary-white;
+
+    &:hover {
+        background-color: $bpor-colour-secondary-sunshineyellow;
+        border-color: black;
+        color: $bpor-colour-primary-off-black; 
+    }
+
+    &:active {
+        background-color: $bpor-colour-primary-navy;
+        color: $bpor-colour-primary-white;
+    }
+
+   &--secondary {
+    background-color: $bpor-colour-secondary-groveblue;
+    color: $bpor-colour-text-heading;
+
+    &:active {
+      background-color: $bpor-colour-primary-navy;
+      color: $bpor-colour-primary-white;
+    }
+
+    &::before {
+        border-color: $bpor-colour-primary-off-black;
+    }
+  }
+
+  &--tertiary {
+    background-color: $bpor-colour-background-default;
+    color: $bpor-colour-text-heading;
+    border-color: $bpor-colour-primary-navy;
+
+    &:active {
+      background-color: $bpor-colour-primary-white;
+      color: $bpor-colour-text-heading;
+      border-color: $bpor-colour-primary-navy;
+    }
+
+    &::before {
+        border-color: $bpor-colour-primary-navy;
+    }
+  }
+}
+.nhsuk-button--secondary:not(:focus):not(:active)::before {
+    border-color: $bpor-colour-primary-navy;
+}
+
+.nhsuk-button--secondary:not(:focus):not(:active)::after {
+    box-shadow: 0 4px 0 $bpor-colour-primary-navy;
+}
+
+.nhsuk-inset-text {
+    border-left: 8px solid $bpor-colour-primary-navy;
+}
+
+
+.nhsuk-header__service-logo {
+  display: inline-flex;
+  position: relative;
+  border-radius: 4px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+
+  &:hover,
+  &:focus-within {
+    outline: 3px solid $bpor-colour-focus;
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+
+  &:focus-visible {
+    outline: 3px solid $bpor-colour-focus;
+    outline-offset: 4px;
+    box-shadow: 0 0 0 3px rgba(23, 40, 98, 0.2);
+  }
+
+  img {
+    display: block;
+    max-height: 40px;
+    width: auto;
+    transition: opacity 0.2s ease, filter 0.2s ease, transform 0.2s ease;
+  }
+
+  &:hover img,
+  &:focus-within img {
+    opacity: 0.9;
+    filter: brightness(1.05);
+    transform: translateY(-1px);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 3px;
+    background: $bpor-colour-focus;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  &:hover::after,
+  &:focus-within::after,
+  &:focus-visible::after {
+    opacity: 1;
+  }
+}
+
+.nhsuk-card {
+  background-color: $bpor-colour-primary-white;
+  border: 1px $bpor-colour-primary-off-black;
+  border-radius: 4px;
+  padding: 16px;
+  margin-bottom: 16px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease rgba(0, 81, 194, 0.35);
+
+  &:hover,
+  &:focus-within {
+    box-shadow: 0 4px 8px rgba(0, 81, 194, 0.35);
+    transform: translateY(-2px);
+    outline: none;
+    border-color: $bpor-colour-focus;
+  }
+}
+
+.nhsuk-repeatable-item {
+  border:none;
+  border-left: none;
+  background: rgba($bpor-colour-primary-white, 0.7);
+  border-radius: 6px;
+  padding: 1rem 1rem 0.5rem;
+  margin-top: 1rem;
+  position: relative;
+
+  + .nhsuk-repeatable-item {
+    margin-top: 1.5rem;
+  }
+
+  [data-repeatable-title] {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: $bpor-colour-text-heading;
+  }
+
+  .nhsuk-form-group {
+    margin-bottom: 1rem;
+  }
+
+  [data-repeatable-remove] {
+    margin-top: 0.5rem;
+  }
+}
+
+[data-repeatable-add] {
+  margin-top: 1rem;
+}
+
+.nhsuk_panel__content {
+  font-family: "Inclusive Sans", sans-serif;
+  color: $bpor-colour-primary-off-black;
+}
+
+.tabs-960 {
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+  background-color:white;
+}
+
+.tabs-960 .nhsuk-tabs__list {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto 32px;
+  text-align: center;
+  list-style: none;
+  padding: 0;
+
+}
+
+
