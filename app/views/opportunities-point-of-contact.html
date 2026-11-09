@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% from "back-link/macro.njk" import backLink %}
+{% from "button/macro.njk" import button %}
+{% from "input/macro.njk" import input %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block beforeContent %}
+  {{ backLink({
+    href: "/opportunities-study-title-description.html",
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <h1 class="nhsuk-heading-xl">
+     Who is the main point of contact for this study?
+      </h1>
+      <form action="/opportunities-point-of-contact.html" method="post" novalidate>
+
+       {% from "input/macro.njk" import input %}
+
+      {{ input({
+      label: {
+      text: "What is your full name?"
+      },
+       id: "full-name",
+       name: "fullName"
+      }) }}
+
+       {{ input({
+      label: {
+      text: "What is your email address?"
+      },
+       id: "email",
+       name: "Email"
+      }) }}
+
+      {{ input({
+      label: {
+      text: "What is your telephone number?"
+      },
+       id: "telephone",
+       name: "Telephone"
+      }) }}
+
+      {{ input({
+      label: {
+      text: "What is your organisation?"
+      },
+       id: "organisation",
+       name: "Organisation"
+      }) }}
+
+        {{ button({
+          text: "Continue"
+        }) }}
+        
+      </form>
+    
+   
+
+    </div>
+  </div>
+{% endblock %}

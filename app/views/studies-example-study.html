@@ -1,0 +1,373 @@
+{% extends "layout.html" %}
+{% extends "layout.html" %}
+{% from "tag/macro.njk" import tag %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    <div class="nhsuk-u-margin-bottom-2">
+      <div class="nhsuk-u-margin-top-2">
+        {{ tag({
+          text: "New application",
+          colour: "grey"
+        }) }}
+      </div>
+    </div>
+    <div class="nhsuk-u-padding-bottom-5"></div>
+    <h1 class="nhsuk-heading-l">This is an example study</h1>
+  </div>
+</div>
+<div class="nhsuk-u-padding-bottom-5"></div>
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-third">
+    {% from "card/macro.njk" import card %}
+<ul class="nhsuk-grid-row nhsuk-card-group">
+  <li class="nhsuk-grid-column-full-width nhsuk-card-group__item">
+    {% call card({
+      heading: {
+        text: "0",
+        visuallyHiddenText: "Total contacted",
+        classes: "nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1"
+      },
+      clickable: true
+    }) %}
+      <p>Total contacted</p>
+    {% endcall %}
+  </li>
+</ul>
+    {% from "button/macro.njk" import button %}
+    {{ button({
+      text: "Update recruitment total"
+    }) }}
+</div>
+  <div class="nhsuk-grid-column-one-third">
+    <ul class="nhsuk-grid-row nhsuk-card-group">
+  <li class="nhsuk-grid-column-full-width nhsuk-card-group__item">
+    {% call card({
+      heading: {
+        text: "0",
+        visuallyHiddenText: "Total interested",
+        classes: "nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1"
+      },
+      clickable: true
+    }) %}
+      <p>Total interested</p>
+    {% endcall %}
+  </li>
+</ul>
+</div>
+  <div class="nhsuk-grid-column-one-third">
+       <ul class="nhsuk-grid-row nhsuk-card-group">
+  <li class="nhsuk-grid-column-full-width nhsuk-card-group__item">
+    {% call card({
+      heading: {
+        text: "0",
+        visuallyHiddenText: "Recruited",
+        classes: "nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1"
+      },
+      clickable: true
+    }) %}
+      <p>Recruited</p>
+    {% endcall %}
+  </li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <div class="tabs-960">
+      {% from "tabs/macro.njk" import tabs %}
+      {% from "tables/macro.njk" import table %}
+
+{% set pastDayContent %}
+  {{ table({
+    caption: "Study invites",
+    head: [
+      {
+        text: "Study invites",
+        format: "text"
+      },
+      {
+        text: "Volunteers recruited",
+        format: "number"
+      },
+      {
+        text: "Date volunteers recruited",
+        format: "date"
+      }
+    ],
+    rows: [
+      [
+        {
+          text: "There haven't been any communications about this study sent yet"
+        },
+        {
+          text: "0",
+          format: "numeric"
+        },
+        {
+          text: "00/00/0000",
+          format: "date"
+        }
+      ]
+    ]
+  }) }}
+{% endset -%}
+
+{% set pastWeekContent %}
+  {{ table({
+    caption: "Study details",
+    rows: [
+      [
+        {
+          text: "What is the title of your opportunity?"
+        },
+        {
+          text: "Opportunity title",
+          format: "text"
+        }
+      ],
+      [
+        {
+          text: "Provide a one-line description of your opportunity"
+        },
+        {
+          text: "This is a one line description of this opportunity",
+          format: "text"
+        }
+      ],
+      [
+        {
+          text: "Who is the main point of contact for this study?"
+        },
+        {
+          text: "Jennifer Aniston,j.aniston@leeds.ac.uk,07709509509,University of Leeds",
+          format: "text"
+        }
+      ],
+      [
+        {
+          text: "Who will be included in this opportunity?"
+        },
+        {
+          text: "Over the age of 60., Have experienced depressive symptoms after a fracture.",
+          format: "text"
+        }
+      ],
+      [
+        {
+          text: "When will you stop recruiting to this opportunity"
+        },
+        {
+          text: "12/12/2027",
+          format: "date"
+        }
+      ]
+    ]
+  }) }}
+{% endset -%}
+
+{% set pastMonthContent %}
+  {{ table({
+    caption: "Advert",
+  
+    rows: [
+      [
+        {
+          text: "About the opportunity"
+        },
+        {
+          text: "We will create an approach to help older people with depressive symptoms get the most out of their rehabilitation after a broken bone in their hip, leg, or foot.",
+          format: "text"
+        }
+      ],
+      [
+        {
+          text: "Select the  opportunity type"
+        },
+        {
+          text: "Online or remote",
+          format: "text"
+        }
+      ],
+      [
+        {
+          text: "Research Location"
+        },
+        {
+          text: "",
+          format: "text"
+        }
+      ],
+      [
+        {
+          text: "Inclusion criteria"
+        },
+        {
+          text: "Over the age of 60.
+Have experienced depressive symptoms after a fracture.",
+          format: "list"
+        }
+      ],
+       [
+        {
+          text: "What will the participant do"
+        },
+        {
+          text: "Involvement includes quarterly online meetings.",
+          format: "text"
+        }
+      ],
+      [
+        {
+          text: "Will participants be reimbursed for travel and inconvenience costs?"
+        },
+        {
+          text: "No",
+          format: "text"
+        }
+      ],
+      [
+        {
+          text: "Will participants be offered an incentive for taking part?"
+        },
+        {
+          text: "Yes",
+          format: "text"
+        }
+      ],
+      [
+        {
+          text: "If yes, you can provide details of the incentives."
+        },
+        {
+          text: "£27.50 per hour, payment provided through voucher payment",
+          format: "text"
+        }
+      ],
+      [
+        {
+          text: "Link to external website"
+        },
+        {
+          text: "",
+          format: "text"
+        }
+      ],
+      [
+        {
+          text: "Contact details"
+        },
+        {
+          text: "Your Name, your@email.ac.uk, 07780995039",
+          format: "text"
+        }
+      ],
+      [
+        {
+          text: "Information to register by email"
+        },
+        {
+          text: "Tell me when your last fracture was and how you felt about it afterwards",
+          format: "text"
+        }
+      ]
+    ]
+  }) }}
+{% endset -%}
+
+{% set pastYearContent %}
+  {{ table({
+    caption: "Past year",
+    head: [
+      {
+        text: "Case manager"
+      },
+      {
+        text: "Cases opened",
+        format: "numeric"
+      },
+      {
+        text: "Cases closed",
+        format: "numeric"
+      }
+    ],
+    rows: [
+      [
+        {
+          text: "David Francis"
+        },
+        {
+          text: "1380",
+          format: "numeric"
+        },
+        {
+          text: "1472",
+          format: "numeric"
+        }
+      ],
+      [
+        {
+          text: "Paul Farmer"
+        },
+        {
+          text: "1129",
+          format: "numeric"
+        },
+        {
+          text: "1083",
+          format: "numeric"
+        }
+      ],
+      [
+        {
+          text: "Rita Patel"
+        },
+        {
+          text: "1539",
+          format: "numeric"
+        },
+        {
+          text: "1265",
+          format: "numeric"
+        }
+      ]
+    ]
+  }) }}
+{% endset -%}
+{{ tabs({
+  items: [
+    {
+      label: "Study invites",
+      id: "study-invites",
+      panel: {
+        html: pastDayContent
+      }
+    },
+    {
+      label: "Study details",
+      id: "study-details",
+      panel: {
+        html: pastWeekContent
+      }
+    },
+    {
+      label: "Advert",
+      id: "advert",
+      panel: {
+        html: pastMonthContent
+      }
+    }
+  ]
+}) }}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

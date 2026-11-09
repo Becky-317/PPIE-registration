@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% from "back-link/macro.njk" import backLink %}
+{% from "button/macro.njk" import button %}
+{% from "date-input/macro.njk" import dateInput %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block beforeContent %}
+  {{ backLink({
+    href: "/opportunities-incentives.html",
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <form action="/opportunities-additional-links.html" method="post" novalidate>
+        {% from "input/macro.njk" import input %}
+
+        {{ input({
+        label: {
+          heading: "Additional links (optional)",
+          size: "l"
+        },
+        hint: {
+         text: "If there is more information about the opportunity for the volunteers to read, you can provide the link to it."
+      },
+      id: "additional-links",
+      name: "data.additionalLinks",
+      width: 20,
+      code: true,
+      inputmode: "text",
+      spellcheck: false
+      }) }}
+
+ {{ button({
+          text: "Continue"
+        }) }}
+     
+      </form>
+
+
+
+    </div>
+  </div>
+{% endblock %}
+

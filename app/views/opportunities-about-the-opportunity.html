@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% from "back-link/macro.njk" import backLink %}
+{% from "button/macro.njk" import button %}
+{% from "input/macro.njk" import input %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block beforeContent %}
+  {{ backLink({
+    href: "/opportunities-stageone-complete.html",
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+  
+      <form action="/opportunities-about-the-opportunity.html" method="post" novalidate>
+
+        {% from "textarea/macro.njk" import textarea %}
+
+        {{ textarea({
+        label: {
+        heading: "About the opportunity",
+        size: "l"
+        },
+        hint: {
+        text: "Provide a short description of the opportunity."
+        },
+        id: "about-the-opportunity",
+        name: "about-the-opportunity"
+        }) }}
+        <p class="nhsuk-hint">You have 500 characters remaining</p>
+         {{ button({
+          text: "Continue"
+        }) }}
+    
+        
+      </form>
+    
+   
+
+    </div>
+  </div>
+{% endblock %}

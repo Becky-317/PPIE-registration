@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% from "back-link/macro.njk" import backLink %}
+{% from "button/macro.njk" import button %}
+{% from "input/macro.njk" import input %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block beforeContent %}
+  {{ backLink({
+    href: "opportunities-contact-details-check-answers.html",
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+  
+      <form action="/opportunities-information-to-register-by-email.html" method="post" novalidate>
+
+        {% from "textarea/macro.njk" import textarea %}
+
+        {{ textarea({
+        label: {
+        heading: "Information to register by email",
+        size: "l"
+        },
+        hint: {
+        text: "If you want the participant to email you to register their interest, what information should they provide in the email?"
+        },
+        id: "email-information",
+        name: "email-information"
+
+        }) }}
+        <p class="nhsuk-hint">You have 500 characters remaining</p>
+          {{ button({
+          text: "Continue"
+        }) }}
+    
+      </form>
+    
+    
+  
+
+    </div>
+  </div>
+{% endblock %}

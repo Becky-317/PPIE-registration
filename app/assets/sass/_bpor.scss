@@ -142,14 +142,21 @@ a {
     color: $bpor-colour-secondary-blueflame;
 }
 
+.nhsuk-fieldset__legend,
+.nhsuk-fieldset__legend--l {
+  font-family: "Archia", sans-serif;
+  font-weight: 700 !important;
+  color: $bpor-colour-text-heading;
+}
+
 // Components
 
 .bpor-panel {
     background-color: $bpor-colour-secondary-blueflame;
     .nhsuk-panel__heading {
-        font-family: "Inclusive Sans", sans-serif;
+        font-family: "Archia", sans-serif;
         color: $bpor-colour-primary-white;
-        text-decoration: underline;
+        text-decoration: none;
     }
 }
 
@@ -176,20 +183,32 @@ a {
     background-color: $bpor-colour-secondary-groveblue;
     color: $bpor-colour-text-heading;
 
-   &:active {
-    background-color: $bpor-colour-primary-navy;
-    color: $bpor-colour-primary-white;
-
-   }
+    &:active {
+      background-color: $bpor-colour-primary-navy;
+      color: $bpor-colour-primary-white;
+    }
 
     &::before {
         border-color: $bpor-colour-primary-off-black;
     }
+  }
 
-    
-}
-}
+  &--tertiary {
+    background-color: $bpor-colour-background-default;
+    color: $bpor-colour-text-heading;
+    border-color: $bpor-colour-primary-navy;
 
+    &:active {
+      background-color: $bpor-colour-primary-white;
+      color: $bpor-colour-text-heading;
+      border-color: $bpor-colour-primary-navy;
+    }
+
+    &::before {
+        border-color: $bpor-colour-primary-navy;
+    }
+  }
+}
 .nhsuk-button--secondary:not(:focus):not(:active)::before {
     border-color: $bpor-colour-primary-navy;
 }
@@ -253,4 +272,75 @@ a {
   &:focus-visible::after {
     opacity: 1;
   }
+}
+
+.nhsuk-card {
+  background-color: $bpor-colour-primary-white;
+  border: 1px solid grey;
+  border-radius: 4px;
+  padding: 16px;
+  margin-bottom: 16px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease rgba(0, 81, 194, 0.35);
+
+  &:hover,
+  &:focus-within {
+    box-shadow: 0 4px 8px rgba(0, 81, 194, 0.35);
+    transform: translateY(-2px);
+    outline: none;
+    border-color: $bpor-colour-focus;
+  }
+}
+
+.nhsuk-repeatable-item {
+  border:none;
+  border-left: none;
+  background: rgba($bpor-colour-primary-white, 0.7);
+  border-radius: 6px;
+  padding: 1rem 1rem 0.5rem;
+  margin-top: 1rem;
+  position: relative;
+
+  + .nhsuk-repeatable-item {
+    margin-top: 1.5rem;
+  }
+
+  [data-repeatable-title] {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: $bpor-colour-text-heading;
+  }
+
+  .nhsuk-form-group {
+    margin-bottom: 1rem;
+  }
+
+  [data-repeatable-remove] {
+    margin-top: 0.5rem;
+  }
+}
+
+[data-repeatable-add] {
+  margin-top: 1rem;
+}
+
+.nhsuk_panel__content {
+  font-family: "Inclusive Sans", sans-serif;
+  color: $bpor-colour-primary-off-black;
+}
+
+.tabs-960 {
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+  background-color:white;
+}
+
+.tabs-960 .nhsuk-tabs__list {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto 32px;
+  text-align: center;
+  list-style: none;
+  padding: 0;
+
 }

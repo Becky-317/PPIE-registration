@@ -1,0 +1,78 @@
+<div class="nhsuk-form-group" data-repeatable-group data-repeatable-selector=".nhsuk-repeatable-item">
+  <fieldset class="nhsuk-fieldset">
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+      Contact details
+    </legend>
+
+    {% set contacts = data.contactdetails or [{ name: '', role: '', organisation: '', email: '', telephone: '' }] %}
+
+    {% for contact in contacts %}
+      {% set index = loop.index0 %}
+
+      <div class="nhsuk-repeatable-item" data-repeatable-item>
+        <h3 class="nhsuk-heading-s" data-repeatable-title>Contact details</h3>
+
+        <div class="nhsuk-form-group">
+          {{ input({
+            label: {
+              text: "Name",
+              size: "s"
+            },
+            id: "name-" + index,
+            name: "contactdetails[" + index + "][name]",
+            value: contact.name
+          }) }}
+
+          {{ input({
+            label: {
+              text: "Role",
+              size: "s"
+            },
+            id: "role-" + index,
+            name: "contactdetails[" + index + "][role]",
+            value: contact.role
+          }) }}
+
+          {{ input({
+            label: {
+              text: "Organisation",
+              size: "s"
+            },
+            id: "organisation-" + index,
+            name: "contactdetails[" + index + "][organisation]",
+            value: contact.organisation
+          }) }}
+
+          {{ input({
+            label: {
+              text: "Email",
+              size: "s"
+            },
+            id: "email-" + index,
+            name: "contactdetails[" + index + "][email]",
+            value: contact.email
+          }) }}
+
+          {{ input({
+            label: {
+              text: "Phone number",
+              size: "s"
+            },
+            id: "phone-number-" + index,
+            name: "contactdetails[" + index + "][telephone]",
+            value: contact.telephone,
+            autocomplete: "phone-number"
+          }) }}
+        </div>
+
+        <button class="nhsuk-button nhsuk-button--tertiary nhsuk-u-margin-top-3" type="button" data-repeatable-remove>
+          Remove contact details
+        </button>
+      </div>
+    {% endfor %}
+  </fieldset>
+
+  <button class="nhsuk-button nhsuk-button--secondary" type="button" data-repeatable-add>
+    Add another contact
+  </button>
+</div>

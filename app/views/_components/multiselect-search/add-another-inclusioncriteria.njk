@@ -1,0 +1,33 @@
+<div class="nhsuk-form-group" data-repeatable-group data-repeatable-selector=".nhsuk-repeatable-item">
+  <fieldset class="nhsuk-fieldset">
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+      Provide the inclusion criteria
+    </legend>
+
+    {% set criteriaList = data.inclusionCriteria or [{ inclusionCriterion: '' }] %}
+
+    {% for criterion in criteriaList %}
+      {% set index = loop.index0 %}
+
+      <div class="nhsuk-repeatable-item" data-repeatable-item>
+        <h3 class="nhsuk-heading-s" data-repeatable-title>Inclusion criterion {{ loop.index }}</h3>
+
+        <div class="nhsuk-form-group">
+          {{ input({
+            id: "inclusion-criterion-" + index,
+            name: "inclusionCriteria[" + index + "][inclusionCriterion]",
+            value: criterion.inclusionCriterion
+          }) }}
+        </div>
+
+        <button class="nhsuk-button nhsuk-button--tertiary nhsuk-u-margin-top-3" type="button" data-repeatable-remove>
+          Remove criteria
+        </button>
+      </div>
+    {% endfor %}
+  </fieldset>
+
+  <button class="nhsuk-button nhsuk-button--secondary" type="button" data-repeatable-add>
+    Add another inclusion criterion
+  </button>
+</div>

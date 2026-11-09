@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% from "button/macro.njk" import button %}
+{% from "summary-list/macro.njk" import summaryList %}
+
+{% block beforeContent %}
+  {{ backLink({
+    href: "/opportunities-research-location.html",
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-l">Research location</h1>
+
+      <h2 class="nhsuk-heading-m">
+        You have provided the following research location(s):
+      </h2>
+
+      {% set locationEntries = data.researchLocation if data.researchLocation and data.researchLocation.length else [{
+        addressLine1: data.addressLine1,
+        addressLine2: data.addressLine2,
+        addressLine3: data.addressLine3,
+        townOrCity: data.townOrCity,
+        postcode: data.postcode
+      }] %}
+
+      {% set allLocations %}
+        {% for location in locationEntries %}
+          <div class="nhsuk-u-margin-bottom-4">
+            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">Research location {{ loop.index }}</h3>
+            <ul class="nhsuk-list nhsuk-list--bullet nhsuk-u-margin-bottom-0">
+              {% for line in [location.addressLine1, location.addressLine2, location.addressLine3, location.townOrCity, location.postcode] %}
+                {% if line %}
+                  <li>{{ line }}</li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+        {% endfor %}
+      {% endset %}
+
+      {{ summaryList({
+        rows: [
+          {
+            key: {
+              text: "Research location"
+            },
+            value: {
+              html: allLocations | trim
+            },
+            actions: {
+              items: [
+                {
+                  href: "opportunities-research-location.html",
+                  text: "Change",
+                  visuallyHiddenText: "research location"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <form action="/opportunities-address-check-answer.html" method="post" novalidate>
+        {{ button({
+          text: "Continue"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

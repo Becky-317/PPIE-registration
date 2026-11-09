@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% from "breadcrumb/macro.njk" import breadcrumb %}
+{% from "button/macro.njk" import button %}
+{% from "inset-text/macro.njk" import insetText %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+{% set dummyNhsNumber = "999 123 4567" %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-xl">Welcome to the Be Part of Research 
+registry</h1>
+      <p>This service gives researchers and sponsors free access to our UK wide registry of research-engaged volunteers.
+
+      <p>You can identify volunteers for your opportunity through a wide range of data including age, ethnic group, sex, location and condition.</p>
+
+      <p>To access this registry, you must:</p>
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>create an NIHR account</li>
+        <li>provide your study details</li>
+      </ul>
+      <p>You may already have an NIHR account if you’ve previously used another NIHR service. For example, Sponsor Engagement, NIHR Learn, or CPMS.</p>
+      
+      {% from "button/macro.njk" import button %}
+
+{{ button({
+  text: "Continue with email address",
+  href: "/studies-email-address.html"
+}) }}
+
+  
+
+<p>If you already have an NIHR account, you can <a href="#">sign in</a> 
+
+       {% set insetTextHtml %}
+        <p>This page is for research teams and sponsors.
+          If you are a member of the public, <a href="#">you can create or sign in to your Be Part of Research volunteer account.</a></p>
+      {% endset %}
+
+      {{ insetText({
+        html: insetTextHtml | safe
+      }) }}
+
+      {% from "button/macro.njk" import button %}
+
+{% endblock %}

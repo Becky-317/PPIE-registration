@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <h1 class="nhsuk-heading-l">My Studies</h1>
+    <div class="nhsuk-grid-row">
+      
+      <div class="nhsuk-grid-column-two-thirds">
+        {% from "search-input/macro.njk" import searchInput %}
+
+{{ searchInput({
+  label: {
+    text: "Search full or partial study name, full study or CPMS ID",
+    size: "s"
+  },
+  name: "Study search",
+  id: "study-search",
+  width: 20
+}) }}
+      </div>
+      <div class="nhsuk-grid-column-one-third nhsuk-u-text-align-right">
+        {% from "button/macro.njk" import button %}
+        {{ button({
+        text: "Add a new opportunity",
+        href: "opportunities-start-page.html"
+        }) }} 
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <hr class="nhsuk-section-break nhsuk-section-break--xl nhsuk-section-break--visible">
+  {{ card({
+      heading: {
+        text: "No studies available",
+        size: "m"
+      },
+      description: "You don't currently have any studies available. Submit an opportunity to get started.",
+      href: "opportunities-start-page.html",
+      clickable: true,
+      variant: "secondary"
+    }) }}
+</div>
+
+
+
+{% endblock %}

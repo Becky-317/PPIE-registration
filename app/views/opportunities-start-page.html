@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% from "breadcrumb/macro.njk" import breadcrumb %}
+{% from "button/macro.njk" import button %}
+{% from "inset-text/macro.njk" import insetText %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+{% set dummyNhsNumber = "999 123 4567" %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "#",
+        text: "Start page"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-xl">Submit an opportunity to use the Be Part of Research registry</h1>
+      <p>In this form you will be asked to provide some information about the opportunity. This is to check its eligibility to use the registry.
+
+      All questions are mandatory unless labelled as optional.</p>
+
+      <h2 class="nhsuk-heading-l">Submit an opportunity to use the Be Part of Research registry</h2>
+      <p>The opportunity you submit must:</p>
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>be related to health and care research</li>
+        <li>involve members of the public to inform study design and delivery</li>
+        <li>originate from academia, a government agency, or a charity.</li>
+      </ul>
+      <p>If you have any questions you can email us at <a href="mailto:example@example.com">example@example.com</a></p>
+      {{ checkboxes({
+  idPrefix: "example",
+  name: "example",
+  items: [
+    {
+      value: "consent",
+      text: "I confirm I have read and agree to the terms and conditions"
+    }
+   
+  ]
+}) }}
+ 
+
+  {{ button({
+    text: "Start now",
+    href: "/opportunities-study-title-description.html",
+    variant: ".nhsukbutton"
+  }) }}
+
+
+
+{% endblock %}

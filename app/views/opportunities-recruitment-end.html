@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% from "back-link/macro.njk" import backLink %}
+{% from "button/macro.njk" import button %}
+{% from "date-input/macro.njk" import dateInput %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block beforeContent %}
+  {{ backLink({
+    href: "opportunities-recruitment-goal.html",
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <form action="/opportunities-recruitment-end.html" method="post" novalidate>
+
+        {{ dateInput({
+          fieldset: {
+            legend: {
+              text: "When will you stop recruiting to this opportunity?",
+              size: "l",
+              isPageHeading: true
+            }
+          },
+          hint: {
+            text: "If you don't know the exact date, you can provide an estimated one."
+          },
+          id: "end-date",
+          namePrefix: "end-date"
+        }) }}
+
+        {{ button({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+       
+
+    </div>
+  </div>
+{% endblock %}
+

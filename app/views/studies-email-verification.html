@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% from "back-link/macro.njk" import backLink %}
+{% from "button/macro.njk" import button %}
+{% from "input/macro.njk" import input %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block beforeContent %}
+  {{ backLink({
+    href: "#",
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <h1 class="nhsuk-heading-l">
+        Enter the code that we have sent to your email address
+      </h1>
+      <p>We have sent a 6 digit security code to your email address. Please enter the code below to confirm your email address.</p>
+      <form action="/studies-email-verification.html" method="post" novalidate>
+
+        {{ input({
+          label: {
+            text: "6 digit security code",
+            size: "s"
+          },
+          id: "security-code",
+          name: "security-code",
+          width: 20,
+          type: "tel",
+          autocomplete: "tel"
+        }) }}
+
+         
+        {{ button({
+          text: "Continue",
+          href: "/studies-home.html"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

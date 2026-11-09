@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% from "button/macro.njk" import button %}
+{% from "summary-list/macro.njk" import summaryList %}
+
+{% block beforeContent %}
+  {{ backLink({
+    href: "/opportunities-inclusion-criteria.html",
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-l">Inclusion criteria</h1>
+
+      <h2 class="nhsuk-heading-m">
+        You have provided the following inclusion criteria:
+      </h2>
+
+      {% set criteriaEntries = data.inclusionCriteria if data.inclusionCriteria and data.inclusionCriteria.length else [{ inclusionCriterion: data.inclusionCriterion }] %}
+
+      {% set allCriteria %}
+        {% set hasCriteria = false %}
+        {% for criterion in criteriaEntries %}
+          {% if criterion.inclusionCriterion %}
+            {% set hasCriteria = true %}
+            <div class="nhsuk-u-margin-bottom-4">
+              <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">Inclusion criterion {{ loop.index }}</h3>
+              <ul class="nhsuk-list nhsuk-list--bullet nhsuk-u-margin-bottom-0">
+                <li>{{ criterion.inclusionCriterion }}</li>
+              </ul>
+            </div>
+          {% endif %}
+        {% endfor %}
+        {% if not hasCriteria %}Not provided{% endif %}
+      {% endset %}
+
+      {{ summaryList({
+        rows: [
+          {
+            key: {
+              text: "Inclusion criteria"
+            },
+            value: {
+              html: allCriteria | trim
+            },
+            actions: {
+              items: [
+                {
+                  href: "opportunities-inclusion-criteria.html",
+                  text: "Change",
+                  visuallyHiddenText: "inclusion criteria"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <form action="/opportunities-inclusion-check-answer.html" method="post" novalidate>
+        {{ button({
+          text: "Continue"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

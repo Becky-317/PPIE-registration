@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+
+{% from "card/macro.njk" import card %}
+{% from "breadcrumb/macro.njk" import breadcrumb %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "#",
+        text: "Home"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<h1 class="nhsuk-heading-xl">Welcome to Find, Recruit and Follow-up</h1>
+<p class="nhsuk-body-l">We are here to help researchers and life science companies understand, utilise and navigate the range of health data and digital tools (which we have termed data service providers) to facilitate data enabled Find, Recruit and Follow-up activities across the UK. This will enable users to harness the power of data and digital for better delivery of research which in turn will increase the speed and efficiency of clinical trials, reduce the burden on staff time and enable more patients to participate in research relevant to them.   
+
+Explore our list of data service providers to make more informed and timely choices about which services to use for your research and what logistical, legal and financial implications are involved.</p>
+
+<h2 class="nhsuk-heading-l">Each of the data service providers offers, one or more of the following services:
+</h2>
+
+
+<ul class="nhsuk-grid-row nhsuk-card-group">
+  <li class="nhsuk-grid-column-one-half nhsuk-card-group__item">
+    {{ card({
+      heading: {
+        text: "Find",
+        size: "m"
+      },
+      description: "Identifying potential numbers of participants to support the planning or appropriate placement of studies in the UK.",
+      href: "#",
+      clickable: true,
+      variant: "primary"
+    }) }}
+  </li>
+  <li class="nhsuk-grid-column-one-half nhsuk-card-group__item">
+    {{ card({
+      heading: {
+        text: "Recruit",
+        size: "m"
+      },
+      description: "Enabling individuals identified by data analysis to be approached about taking part in research.",
+      href: "/find-recruit-follow-up-list.html",
+      clickable: true,
+      variant: "primary"
+    }) }}
+  </li>
+  <li class="nhsuk-grid-column-one-half nhsuk-card-group__item">
+    {{ card({
+      heading: {
+        text: "Follow-up",
+        size: "m"
+      },
+      description: "Matching research participants to existing datasets to facilitate study delivery and follow-up (e.g. by collecting specific events or outcomes).",
+      href: "/find-recruit-follow-up-list.html",
+      clickable: true,
+      variant: "primary"
+    }) }}
+  </li>
+ </ul>
+
+  {{ button({
+        text: "View all data service providers",
+        href: "/find-recruit-follow-up-list.html"
+        }) }}
+
+<ul class="nhsuk-grid-row nhsuk-card-group">
+  <li class="nhsuk-grid-column-one-half nhsuk-card-group__item">
+    {{ card({
+      heading: {
+        text: "Get support for your research",
+        size: "m"
+      },
+      description: "Need help finding appropriate data services, or any other part of the UK journey to getting your study started? The UK offers multiple services and teams of professionals who can support you.",
+      href: "/find-recruit-follow-up-list.html",
+      clickable: true,
+      variant: "secondary"
+    }) }}
+  </li>
+  <li class="nhsuk-grid-column-one-half nhsuk-card-group__item">
+    {{ card({
+      heading: {
+        text: "Organisations providing data services",
+        size: "m"
+      },
+      description: "If you are an organisation offering Find, Recruit and Follow-up data services to researchers and life sciences companies please visit our dedicated page for more information.",
+      href: "/find-recruit-follow-up-list.html",
+      clickable: true,
+      variant: "secondary"
+    }) }}
+  </li>
+</ul>
+
+{% endblock %}
+

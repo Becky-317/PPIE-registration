@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% from "back-link/macro.njk" import backLink %}
+{% from "button/macro.njk" import button %}
+{% from "input/macro.njk" import input %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block beforeContent %}
+  {{ backLink({
+    href: "/opportunities-point-of-contact.html",
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <h1 class="nhsuk-heading-xl">
+      How many people would you like to recruit to this study?</h1>
+      <form action="/opportunities-recruitment-goal.html" method="post" novalidate>
+
+       {% from "input/macro.njk" import input %}
+
+      {{ input({
+      label: {
+      text: "For example, 10 people."
+      },
+       id: "recruitment-goal",
+       name: "recruitmentGoal"
+      }) }}
+
+        {{ button({
+          text: "Continue"
+        }) }}
+    
+      </form>
+    
+   
+
+    </div>
+  </div>
+{% endblock %}

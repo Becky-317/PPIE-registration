@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% from "back-link/macro.njk" import backLink %}
+{% from "button/macro.njk" import button %}
+{% from "radios/macro.njk" import radios %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block beforeContent %}
+  {{ backLink({
+    href: "/opportunities-what-will-the-participant-do.html",
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/opportunities-travel-inconvenience-costs.html" method="post" novalidate>
+
+      {% from "radios/macro.njk" import radios %}
+      {% from "fieldset/macro.njk" import fieldset %}
+      {% from "hint/macro.njk" import hint %}
+
+        {{ radios({
+          fieldset: {
+          legend: {
+          text: "Will participants be reimbursed for travel and inconvenience costs?",
+      size: "l",
+      isPageHeading: true
+    }
+  },
+
+  idPrefix: "yes-no",
+  name: "reimbursed",
+  items: [
+    {
+      value: "Yes",
+      text: "Yes",
+      checked: data.reimbursed == "Yes"
+    },
+    {
+      value: "No",
+      text: "No",
+      checked: data.reimbursed == "No"
+    }
+  ]
+}) }}
+
+         {{ button({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

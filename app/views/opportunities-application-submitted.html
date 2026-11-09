@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+
+{% from "panel/macro.njk" import panel %}
+{% from "summary-list/macro.njk" import summaryList %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {{ panel({
+        heading: "Opportunity submitted",
+        classes: "bpor-panel"
+      }) }}
+
+      <h2 class="nhsuk-heading-m">Next steps</h2>
+
+      <p>
+      You can preview your opportunity listing using the link: 
+      <a href="https://www.bepartofresearch.nihr.ac.uk/opportunity-12" target="_blank" rel="noopener noreferrer">https://www.bepartofresearch.nihr.ac.uk/opportunity-12</a></p>
+
+      <p>If you need to change something you can get in contact with us at:
+
+      <a href="mailto:email.address@bepartofresearch.com">email.address@bepartofresearch.com</a></p>
+
+      <p>We will review your submission and let you know of the outcome.</p>
+
+      <p>If successful, your opportunity will be listed on Be Part of Research. We will send an invitation email to volunteers along with a link to your opportunity. Volunteers will contact you directly to participate.</p>
+
+        {{ button({
+          text: "Return to the registry",
+          href: "opportunities-application-submitted.html"
+        }) }}
+    
+    </div>
+  </div>
+{% endblock %}

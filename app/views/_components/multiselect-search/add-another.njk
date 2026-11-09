@@ -1,0 +1,79 @@
+<div class="nhsuk-form-group" data-repeatable-group data-repeatable-selector=".nhsuk-repeatable-item">
+  <fieldset class="nhsuk-fieldset">
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+      Research location
+    </legend>
+
+    {% set locations = data.researchLocation or [{ addressLine1: '', addressLine2: '', addressLine3: '', townOrCity: '', postcode: '' }] %}
+
+    {% for location in locations %}
+      {% set index = loop.index0 %}
+
+      <div class="nhsuk-repeatable-item" data-repeatable-item>
+        <h3 class="nhsuk-heading-s" data-repeatable-title>Research location {{ loop.index }}</h3>
+
+        <div class="nhsuk-form-group">
+          {{ input({
+            label: {
+              text: "Address line 1",
+              size: "s"
+            },
+            id: "address-line-1-" + index,
+            name: "researchLocation[" + index + "][addressLine1]",
+            value: location.addressLine1
+          }) }}
+
+          {{ input({
+            label: {
+              text: "Address line 2",
+              size: "s"
+            },
+            id: "address-line-2-" + index,
+            name: "researchLocation[" + index + "][addressLine2]",
+            value: location.addressLine2
+          }) }}
+
+          {{ input({
+            label: {
+              text: "Address line 3",
+              size: "s"
+            },
+            id: "address-line-3-" + index,
+            name: "researchLocation[" + index + "][addressLine3]",
+            value: location.addressLine3
+          }) }}
+
+          {{ input({
+            label: {
+              text: "Town or city",
+              size: "s"
+            },
+            id: "town-or-city-" + index,
+            name: "researchLocation[" + index + "][townOrCity]",
+            value: location.townOrCity
+          }) }}
+
+          {{ input({
+            label: {
+              text: "Postcode",
+              size: "s"
+            },
+            id: "postcode-" + index,
+            name: "researchLocation[" + index + "][postcode]",
+            value: location.postcode,
+            width: 20,
+            autocomplete: "postal-code"
+          }) }}
+        </div>
+
+        <button class="nhsuk-button nhsuk-button--tertiary nhsuk-u-margin-top-3" type="button" data-repeatable-remove>
+          Remove location
+        </button>
+      </div>
+    {% endfor %}
+  </fieldset>
+
+  <button class="nhsuk-button nhsuk-button--secondary" type="button" data-repeatable-add>
+    Add another location
+  </button>
+</div>

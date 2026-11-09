@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% from "back-link/macro.njk" import backLink %}
+{% from "button/macro.njk" import button %}
+{% from "input/macro.njk" import input %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block beforeContent %}
+  {{ backLink({
+    href: "date-of-birth.html",
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <h1 class="nhsuk-heading-l">
+      What is your email address?
+      </h1>
+      <form action="/studies-email-address.html" method="post" novalidate>
+
+        {{ input({
+          label: {
+            text: "Email address",
+            size: "s"
+          },
+          id: "Email address",
+          name: "Email address"
+        }) }}
+        
+        {{ button({
+          text: "Continue"
+        }) }}
+      
+      </form>
+    
+  
+    </div>
+  </div>
+{% endblock %}

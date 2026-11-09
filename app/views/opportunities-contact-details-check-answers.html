@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% from "button/macro.njk" import button %}
+{% from "summary-list/macro.njk" import summaryList %}
+
+{% block beforeContent %}
+  {{ backLink({
+    href: "opportunities-contact-details.html",
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-l">Contact details</h1>
+
+      <h2 class="nhsuk-heading-m">
+        You have provided the following contact details:
+      </h2>
+
+      {% set contactEntries = data.contactdetails if data.contactdetails and data.contactdetails.length else [{
+        name: data.name,
+        role: data.role,
+        organisation: data.organisation,
+        telephone: data.telephone,
+        email: data.email
+      }] %}
+
+      {% set allContacts %}
+        {% for contact in contactEntries %}
+          <div class="nhsuk-u-margin-bottom-4">
+            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">Contact detail {{ loop.index }}</h3>
+            <ul class="nhsuk-list nhsuk-list--bullet nhsuk-u-margin-bottom-0">
+              {% for line in [contact.name, contact.role, contact.organisation, contact.telephone, contact.email] %}
+                {% if line %}
+                  <li>{{ line }}</li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+        {% endfor %}
+      {% endset %}
+
+      {{ summaryList({
+        rows: [
+          {
+            key: {
+              text: "Contact details"
+            },
+            value: {
+              html: allContacts | trim
+            },
+            actions: {
+              items: [
+                {
+                  href: "opportunities-contact-details.html",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <form action="/opportunities-contact-details-check-answers.html" method="post" novalidate>
+        {{ button({
+          text: "Continue"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,274 @@
+{% extends "layout.html" %}
+{% from "card/macro.njk" import card %}
+{% from "breadcrumb/macro.njk" import breadcrumb %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    
+    <div class="nhsuk-grid-column-two-thirds">
+      <h1 class="nhsuk-heading-xl">List of data service providers</h1>
+    </div>
+  </div>
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-one-quarter" style="background-color: #ffffff; padding: 1rem;">
+    <h2 class="nhsuk-heading-l">Filter by</h2>
+    {% from "search-input/macro.njk" import searchInput %}
+
+    {{ searchInput({
+    label: {
+    text: "Search",
+    size: "s"
+    },
+    name: "example",
+    id: "example",
+    width: 10
+    }) }}
+
+    {% from "checkboxes/macro.njk" import checkboxes %}
+
+    <hr class="nhsuk-section-break nhsuk-section-break--visible">
+    <div class="nhsuk-u-padding-bottom-9"></div>
+
+{{ checkboxes({
+  fieldset: {
+    legend: {
+      heading: "Type of service",
+      size: "s"
+    }
+  },
+  idPrefix: "nationality",
+  name: "nationality",
+  items: [
+    {
+      value: "find",
+      text: "Find"
+    },
+    {
+      value: "recruit",
+      text: "Recruit"
+    },
+    {
+      value: "follow-up",
+      text: "Follow up"
+    }
+  ]
+}) }}
+
+ <hr class="nhsuk-section-break nhsuk-section-break--visible">
+ <div class="nhsuk-u-padding-bottom-9"></div>
+  {{ checkboxes({
+  fieldset: {
+    legend: {
+      heading: "Geographical coverage",
+      size: "s"
+    }
+  },
+  idPrefix: "geographical.Coverage",
+  name: "geographical.Coverage",
+  items: [
+    {
+      value: "ukwide",
+      text: "UK wide"
+    },
+    {
+      value: "england",
+      text: "England"
+    },
+    {
+      value: "northernireland",
+      text: "Northern Ireland"
+    },
+    {
+      value: "scotland",
+      text: "Scotland"
+    },
+    {
+      value: "wales",
+      text: "Wales"
+    },
+    {
+      value: exclude.Regional",
+      text: "Exclude regional only services"
+    }
+  ]
+}) }}
+<hr class="nhsuk-section-break nhsuk-section-break--visible">
+ <div class="nhsuk-u-padding-bottom-9"></div>
+ {{ checkboxes({
+  fieldset: {
+    legend: {
+      heading: "Costs",
+      size: "s"
+    }
+  },
+   hint: {
+    text: "Find"
+  },
+  idPrefix: "find.Costs",
+  name: "find.Costs",
+  items: [
+    {
+      value: "freeofchargeall",
+      text: "Free of charge for all studies"
+    },
+    {
+      value: "freeofchargenon",
+      text: "Free of charge for non-commercial studies"
+    },
+    {
+      value: "freeofchargeallnon",
+      text: "Chargeable service"
+    }
+  ]
+}) }}
+<hr class="nhsuk-section-break nhsuk-section-break--visible">
+ <div class="nhsuk-u-padding-bottom-9"></div>
+ {{ checkboxes({
+  fieldset: {
+    legend: {
+      heading: "Costs",
+      size: "s"
+    }
+  },
+   hint: {
+    text: "Recruit"
+  },
+  idPrefix: "recruit.Costs",
+  name: "recruit.Costs",
+  items: [
+    {
+      value: "freeofchargeall",
+      text: "Free of charge for all studies"
+    },
+    {
+      value: "freeofchargenon",
+      text: "Free of charge for non-commercial studies"
+    },
+    {
+      value: "freeofchargeallnon",
+      text: "Chargeable service"
+    }
+  ]
+}) }}
+<hr class="nhsuk-section-break nhsuk-section-break--visible">
+ <div class="nhsuk-u-padding-bottom-9"></div>
+ {{ checkboxes({
+  fieldset: {
+    legend: {
+      heading: "Follow-up",
+      size: "s"
+    }
+  },
+   hint: {
+    text: "Follow-up"
+  },
+  idPrefix: "followup.Costs",
+  name: "followup.Costs",
+  items: [
+    {
+      value: "freeofchargeall",
+      text: "Free of charge for all studies"
+    },
+    {
+      value: "freeofchargenon",
+      text: "Free of charge for non-commercial studies"
+    },
+    {
+      value: "freeofchargeallnon",
+      text: "Chargeable service"
+    }
+  ]
+}) }}
+
+ {{ button({
+        text: "Clear all filters",
+        href: "#"
+        }) }}
+
+
+  </div>
+  <div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+     {{ card({
+      heading: {
+        text: "Be Part of Research - public involvement opportunities",
+        size: "m"
+      },
+      description: "You can recruit and work with volunteers to understand their experiences of health conditions, caring for others, or using social care services. This is also known as ‘public involvement in research.’
+                    This can help you with, designing your study, planning how the research will be carried out and how you can apply and share the results of your research",
+      href: "studies-start-page.html",
+      clickable: true,
+      variant: "secondary"
+    }) }},
+    {{ card({
+      heading: {
+        text: "Be Part of Research registry",
+        size: "m"
+      },
+      description: "Be Part of Research registry is the only UK-wide volunteer registry for all health and care specialties. Volunteers choose the conditions and research areas that interest them, or sign up as a healthy volunteer and consent to be contacted about research opportunities in their region. The Be Part of Research registry gives researchers and sponsors free and easy access to research-engaged volunteers from across the UK - enabling study teams to recruit more quickly and effectively.
+
+      Be Part of Research registry supports a broad range of research - from lifestyle questionnaires to clinical trials - taking place in local hospitals, GP surgeries, in care or community settings or at home.",
+      href: "studies-start-page.html",
+      clickable: true,
+      variant: "secondary"
+    }) }},
+     {{ card({
+      heading: {
+        text: "CPRD - Clinical Practice Research Datalink",
+        size: "m"
+      },
+      description: "CPRD offers a number of different services that support Find, Recruit and Follow-up activities.
+
+CPRD SPRINT (Speedy Patient Recruitment INto Trials) is tailored to support commercial organisations rapidly recruit high quality patients living with chronic conditions in the community, into phase 2 and 3 clinical trials. Services are based on centralised primary care electronic health record searches, followed by clinical review.",
+      href: "studies-start-page.html",
+      clickable: true,
+      variant: "secondary"
+    }) }},
+    {{ card({
+      heading: {
+        text: "Join Dementia Research",
+        size: "m"
+      },
+      description: "Join Dementia Research is an easy-to-use service that allows the UK public to register their interest in dementia research, so that they can be contacted about relevant research studies. The overall aim is to improve and speed up study recruitment, and improve volunteers’ access to research. Join Dementia Research improves the timeliness of study recruitment providing researchers with access to thousands of potential volunteers who want to be involved in research.",
+      clickable: true,
+      variant: "secondary"
+    }) }},
+    {{ card({
+      heading: {
+        text: "NHS DigiTrials",
+        size: "m"
+      },
+      description: "NHS DigiTrials delivers a range of data services to support clinical triallists. The services make use of the routine healthcare data collected from a range of care settings across the NHS in England",
+      href: "studies-start-page.html",
+      clickable: true,
+      variant: "secondary"
+    }) }},
+    {{ card({
+      heading: {
+        text: "Join Dementia Research",
+        size: "m"
+      },
+      description: "Join Dementia Research is an easy-to-use service that allows the UK public to register their interest in dementia research, so that they can be contacted about relevant research studies. The overall aim is to improve and speed up study recruitment, and improve volunteers’ access to research. Join Dementia Research improves the timeliness of study recruitment providing researchers with access to thousands of potential volunteers who want to be involved in research.",
+      clickable: true,
+      variant: "secondary"
+    }) }}
+    
+
+
+
+
+
+
+  </div>
+</div>
+
+</div>
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% from "back-link/macro.njk" import backLink %}
+{% from "button/macro.njk" import button %}
+{% from "radios/macro.njk" import radios %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block beforeContent %}
+  {{ backLink({
+    href: "/opportunities-about-the-opportunity.html",
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/opportunities-opportunity-type.html" method="post" novalidate>
+
+      {% from "radios/macro.njk" import radios %}
+      {% from "fieldset/macro.njk" import fieldset %}
+      {% from "hint/macro.njk" import hint %}
+
+        {{ radios({
+          fieldset: {
+          legend: {
+          text: "Select the type of opportunity",
+      size: "l",
+      isPageHeading: true
+    }
+  },
+  
+  idPrefix: "online-remote",
+  name: "opportunityType",
+  items: [
+    {
+      value: "Online or remote",
+      text: "Online or remote",
+      checked: data.opportunityType == "Online or remote"
+    },
+    {
+      value: "In-person or on site",
+      text: "In-person or on site",
+      checked: data.opportunityType == "In-person or on site"
+    },
+    {
+      value: "Both online and in person",
+      text: "Both online and in person",
+      checked: data.opportunityType == "Both online and in person"
+    }
+  ]
+}) }}
+
+         {{ button({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

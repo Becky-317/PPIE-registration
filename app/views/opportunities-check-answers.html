@@ -1,0 +1,385 @@
+{% extends "layout.html" %}
+
+{% from "button/macro.njk" import button %}
+{% from "summary-list/macro.njk" import summaryList %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-l">Check your answers before sending your application</h1>
+
+      <h2 class="nhsuk-heading-m">
+        Personal details
+      </h2>
+
+      {{ summaryList({
+        rows: [
+          {
+            key: {
+              text: "Study title"
+            },
+            value: {
+              text: (data.studyTitle) or "Not provided"
+            },
+            actions: {
+              items: [
+                {
+                  href: "opportunities-study-title-description.html",
+                  text: "Change",
+                  visuallyHiddenText: "study title"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "One line description of the opportunity"
+            },
+            value: {
+              text: (data.Description) or "Not provided"
+            },
+            actions: {
+              items: [
+                {
+                  href: "opportunities-study-title-description.html",
+                  text: "Change",
+                  visuallyHiddenText: "one line description of the opportunity"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Who is the main point of contact for this opportunity?"
+            },
+            value: {
+              text: "" + data.fullName + " " + data.Email + " " + data.Telephone + " " + data.Organisation or "Not provided"
+            },
+            actions: {
+              items: [
+                {
+                  href: "opportunities-main-point-of-contact.html",
+                  text: "Change",
+                  visuallyHiddenText: "main point of contact for this opportunity"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "How many people would you like to recruit to this study?"
+            },
+            value: {
+              text: (data.recruitmentGoal) or "Not provided"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/opportunities-recruitment-goal.html",
+                  text: "Change",
+                  visuallyHiddenText: "recruitment number"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "When will you stop recruiting to this opportunity?"
+            },
+            value: {
+              text: (data["end-date"]) or "Not provided"
+            },
+            actions: {
+              items: [
+                {
+                  href: "opportunities-recruitment-end.html",
+                  text: "Change",
+                  visuallyHiddenText: "recruitment end date"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="nhsuk-heading-m">
+        Opportunity details
+      </h2>
+
+      {% set researchLocationEntries = data.researchLocation if data.researchLocation and data.researchLocation.length else [{
+        addressLine1: data.addressLine1,
+        addressLine2: data.addressLine2,
+        addressLine3: data.addressLine3,
+        townOrCity: data.townOrCity,
+        postcode: data.postcode
+      }] %}
+
+      {% set researchLocationSummary %}
+        {% for location in researchLocationEntries %}
+          {% for line in [location.addressLine1, location.addressLine2, location.addressLine3, location.townOrCity, location.postcode] %}
+            {% if line %}
+              {{ line }}{% if not loop.last %}<br>{% endif %}
+            {% endif %}
+          {% endfor %}
+          {% if not loop.last %}<br>{% endif %}
+        {% endfor %}
+      {% endset %}
+
+      {% set inclusionCriteriaEntries = data.inclusionCriteria if data.inclusionCriteria and data.inclusionCriteria.length else [{ inclusionCriterion: data.inclusionCriterion }] %}
+
+      {% set inclusionCriteriaSummary %}
+        {% set hasCriteria = false %}
+        {% for criterion in inclusionCriteriaEntries %}
+          {% if criterion.inclusionCriterion %}
+            {% set hasCriteria = true %}
+            <div class="nhsuk-u-margin-bottom-2">
+              <ul class="nhsuk-list nhsuk-list--bullet nhsuk-u-margin-bottom-0">
+                <li>{{ criterion.inclusionCriterion }}</li>
+              </ul>
+            </div>
+          {% endif %}
+        {% endfor %}
+        {% if not hasCriteria %}Not provided{% endif %}
+      {% endset %}
+
+      {% set contactEntries = data.contactdetails if data.contactdetails and data.contactdetails.length else [{
+        name: data.name,
+        role: data.role,
+        organisation: data.organisation,
+        telephone: data.telephone,
+        email: data.email
+      }] %}
+
+      {% set contactDetailsSummary %}
+        {% set hasContact = false %}
+        {% for contact in contactEntries %}
+          {% if contact.name or contact.role or contact.organisation or contact.telephone or contact.email %}
+            {% set hasContact = true %}
+            <div class="nhsuk-u-margin-bottom-2">
+              <ul class="nhsuk-list nhsuk-list--bullet nhsuk-u-margin-bottom-0">
+                {% for line in [contact.name, contact.role, contact.organisation, contact.telephone, contact.email] %}
+                  {% if line %}
+                    <li>{{ line }}</li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+        {% endfor %}
+        {% if not hasContact %}Not provided{% endif %}
+      {% endset %}
+
+      {{ summaryList({
+        rows: [
+          {
+            key: {
+              text: "About the Opportunity"
+            },
+            value: {
+              text: (data["about-the-opportunity"]) or "Not provided"
+            },
+            actions: {
+              items: [
+                {
+                  href: "opportunities-about-the-opportunity.html",
+                  text: "Change",
+                  visuallyHiddenText: "about the opportunity"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Select the type of opportunity"
+            },
+            value: {
+              text: (data["opportunityType"]) or "Not provided"
+            },
+            actions: {
+              items: [
+                {
+                  href: "opportunities-opportunity-type.html",
+                  text: "Change",
+                  visuallyHiddenText: "type of opportunity"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Research location"
+            },
+            value: {
+              html: (researchLocationSummary | trim) or "Not provided"
+            },
+            actions: {
+              items: [
+                {
+                  href: "opportunities-research-location.html",
+                  text: "Change",
+                  visuallyHiddenText: "research location"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Inclusion criteria"
+            },
+            value: {
+              html: (inclusionCriteriaSummary | trim) or "Not provided"
+            },
+            actions: {
+              items: [
+                {
+                  href: "opportunities-inclusion-criteria.html",
+                  text: "Change",
+                  visuallyHiddenText: "inclusion criteria"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "What will the participant do?"
+            },
+            value: {
+              text: (data["what-will-the-participant-do"]) or "Not provided"
+            },
+            actions: {
+              items: [
+                {
+                  href: "opportunities-what-will-the-participant-do.html",
+                  text: "Change",
+                  visuallyHiddenText: "what will the participant do"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Will participants be reimbursed for travel and inconvenience costs?"
+            },
+            value: {
+              text: (data["reimbursed"]) or "Not provided"
+            },
+            actions: {
+              items: [
+                {
+                  href: "opportunities-travel-inconvenience-costs.html",
+                  text: "Change",
+                  visuallyHiddenText: "reimbursed for travel and inconvenience costs"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Will participants be offered an incentive for taking part?"
+            },
+            value: {
+              text: (data["incentiveOffered"]) or "Not provided"
+            },
+            actions: {
+              items: [
+                {
+                  href: "opportunities-incentives.html",
+                  text: "Change",
+                  visuallyHiddenText: "reimbursed for travel and inconvenience costs"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "If yes, you can provide details of the incentive (optional)"
+            },
+            value: {
+              text: (data["incentiveDetails"]) or "Not provided"
+            },
+            actions: {
+              items: [
+                {
+                  href: "opportunities-incentives.html",
+                  text: "Change",
+                  visuallyHiddenText: "reimbursed for travel and inconvenience costs"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Additional links"
+            },
+            value: {
+              text: (data["additional-links"]) or "Not provided"
+            },
+            actions: {
+              items: [
+                {
+                  href: "opportunities-additional-links.html",
+                  text: "Change",
+                  visuallyHiddenText: "reimbursed for travel and inconvenience costs"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Contact details"
+            },
+            value: {
+              html: (contactDetailsSummary | trim) or "Not provided"
+            },
+            actions: {
+              items: [
+                {
+                  href: "opportunities-contact-details.html",
+                  text: "Change",
+                  visuallyHiddenText: "change contact details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Information to register by email"
+            },
+            value: {
+              text: (data["email-information"]) or "Not provided"
+            },
+            actions: {
+              items: [
+                {
+                  href: "opportunities-information-to-register-by-email.html",
+                  text: "Change",
+                  visuallyHiddenText: "add information to register by email"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="nhsuk-heading-m">
+        Submit your opportunity
+      </h2>
+
+      <p>
+      You will not be able to make any further changes once your submission is approved.      
+     </p>
+      <p>
+      You can click 'Submit' for your opportunity when you're sure of the information you provided.      
+     </p>
+
+      <form action="/form-handler" method="post" novalidate>
+        {{ button({
+          text: "Submit",
+          href: "opportunities-application-submitted.html"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

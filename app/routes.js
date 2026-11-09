@@ -43,6 +43,10 @@ router.post('/illness-disability-conditions.html', function (req, res) {
   res.redirect('/areas-of-research.html')
 })
 
+router.post('/email-address.html', function (req, res) {
+  res.redirect('/create-password.html')
+})
+
 
 
 router.post('/ethnic-group.html', function (req, res, next) {

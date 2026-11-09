@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% from "back-link/macro.njk" import backLink %}
+{% from "button/macro.njk" import button %}
+{% from "input/macro.njk" import input %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block beforeContent %}
+  {{ backLink({
+    href: "opportunities-start-page.html",
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <h1 class="nhsuk-heading-xl">
+     What is the title of the opportunity?
+      </h1>
+      <form action="/opportunities-study-title-description.html" method="post" novalidate>
+
+        {{ input({
+          label: {
+            text: "The title helps members of the public understand what the opportunity is about. It should be simple to read and easy to understand.",
+            size: "s"
+          },
+          id: "study-title",
+          name: "studyTitle"
+        }) }}
+
+         <h2 class="nhsuk-heading-l">
+          Provide a one-line description of the opportunity
+        </h2>
+        {{ input({
+          label: {
+            text: "This can be a basic overview of what the opportunity deals with.",
+            size: "s"
+          },
+          id: "opportunity-description",
+          name: "Description"
+        }) }}
+
+        {{ button({
+          text: "Continue"
+        }) }}
+    
+        
+      </form>
+    
+   
+
+    </div>
+  </div>
+{% endblock %}
