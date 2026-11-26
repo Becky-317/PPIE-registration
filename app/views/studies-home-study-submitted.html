@@ -1,38 +1,81 @@
 {% extends "layout.html" %}
+{% from "card/macro.njk" import card %}
+{% from "breadcrumb/macro.njk" import breadcrumb %}
+{% from "button/macro.njk" import button %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
 {% block content %}
-<div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-full">
-    <h1 class="nhsuk-heading-l">My Studies</h1>
-    <div class="nhsuk-grid-row">
-      
-      <div class="nhsuk-grid-column-two-thirds">
-        {% from "search-input/macro.njk" import searchInput %}
+  <div class="nhsuk-grid-row">
+    
+    <div class="nhsuk-grid-column-two-thirds">
+      <h1 class="nhsuk-heading-xl">My opportunities</h1>
+    </div>
+  </div>
+  <div class="nhsuk-grid-row studies-home-search-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      {% from "search-input/macro.njk" import searchInput %}
 
-{{ searchInput({
-  label: {
-    text: "Search full or partial study name, full study or CPMS ID",
-    size: "s"
-  },
-  name: "Study search",
-  id: "study-search",
-  width: 20
-}) }}
-      </div>
-      <div class="nhsuk-grid-column-one-third nhsuk-u-text-align-right">
-        {% from "button/macro.njk" import button %}
+      {{ searchInput({
+        label: {
+          text: "You can search for the opportunities you have submitted",
+          size: "s"
+        },
+        name: "example",
+        id: "example",
+        width: 10,
+        formGroup: {
+          classes: "studies-home-search-input"
+        }
+      }) }}
+    </div>
+    <div class="nhsuk-grid-column-one-third nhsuk-u-text-align-right">
+      <div class="studies-home-search-actions">
         {{ button({
-        text: "Submit a new opportunity",
-        href: "opportunities-start-page.html"
-        }) }} 
-
-        </div>
-
+          text: "Submit a new opportunity",
+          href: "/opportunities-start-page.html"
+        }) }}
       </div>
     </div>
   </div>
-  <hr class="nhsuk-section-break nhsuk-section-break--xl nhsuk-section-break--visible">
- 
-{% from "card/macro.njk" import card %}
+<div class="nhsuk-u-padding-bottom-8"></div>
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-one-quarter" style="background-color: #ffffff; padding: 1rem;">
+    <h2 class="nhsuk-heading-m">Filter by status</h2>
+    
+{{ checkboxes({
+
+  idPrefix: "status",
+  name: "status",
+  items: [
+    {
+      value: "new.Application",
+      text: "New application"
+    },
+    {
+      value: "in.Progress",
+      text: "In progress"
+    },
+    {
+      value: "active",
+      text: "Active"
+    },
+    {
+      value: "concluded",
+      text: "Concluded"
+    },
+    {
+      value: "rejected",
+      text: "Rejected"
+    }
+  ]
+}) }}
+
+    {% from "checkboxes/macro.njk" import checkboxes %}
+
+ </div>
+<div class="nhsuk-grid-column-two-thirds">
+  {% from "card/macro.njk" import card %}
 {% from "tag/macro.njk" import tag %}
 
 {{ card({
@@ -40,14 +83,14 @@
   clickable: true,
   variant: "secondary",
   heading: {
-    text: "This is an example study",
+    text: "This is an example opportunity",
     size: "m"
   },
   description: {
     html: '
       <div class="nhsuk-u-margin-bottom-2">
         <span class="nhsuk-u-margin-right-2">' +
-          tag({ text: "Study id: 12345", colour: "blue" }) +
+          tag({ text: "Opportunity id: 12345", colour: "blue" }) +
         '</span>' +
         tag({ text: "New application", colour: "grey" }) +
       '</div>
@@ -58,7 +101,8 @@
   }
 }) }}
 </div>
+  </div>
+  
 
-
-
+  
 {% endblock %}

@@ -1,8 +1,9 @@
 <div class="nhsuk-form-group" data-repeatable-group data-repeatable-selector=".nhsuk-repeatable-item">
   <fieldset class="nhsuk-fieldset">
     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-      Provide the inclusion criteria
+      Who will be included in this opportunity?
     </legend>
+    <p>Inclusion criteria can be added one at a time. Provide one criterion and click ‘Add another inclusion criterion’ to add more. The criteria will appear as bullet points in the webpage.</p>
 
     {% set criteriaList = data.inclusionCriteria or [{ inclusionCriterion: '' }] %}
 

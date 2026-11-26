@@ -27,13 +27,22 @@
         size: "l"
         },
         hint: {
-        text: "Provide a short description of the opportunity."
+        text: "Provide a detailed description of the opportunity. You will be asked to provide information about participants later. If there is a specific date when the opportunity will end, you can provide this information here."
         },
         id: "about-the-opportunity",
         name: "about-the-opportunity"
         }) }}
         <p class="nhsuk-hint">You have 500 characters remaining</p>
-         {{ button({
+        
+         {% call details({
+          summary: "How to format your description"
+          }) %}
+        <p>Write in plain English and use short sentences. Try to break long walls of text into short paragraphs.</p>
+  
+{% endcall %}
+
+        
+        {{ button({
           text: "Continue"
         }) }}
     

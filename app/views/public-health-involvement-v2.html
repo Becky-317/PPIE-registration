@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% from "back-link/macro.njk" import backLink %}
+{% from "button/macro.njk" import button %}
+{% from "radios/macro.njk" import radios %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block beforeContent %}
+  {{ backLink({
+    href: "areas-of-research.html",
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <form action="/public-health-involvement.html" method="post" novalidate>
+
+         <h1 class="nhsuk-heading-l">Would you like to receive public involvement opportunities in addition to health and care research studies?</h1>
+        <p class="nhsuk-body">Public involvement opportunities involve sharing your experience about a health condition, caring for someone, or using social care services with the research team. You can help make research more relevant and useful to patients, carers and the public. </p>
+
+        {{ radios({
+          hint: {
+          text: "If you select ‘No’, you will still be matched to health and care research studies and can choose to take part in them."
+          },
+          name: "Public health involvement",
+          idPrefix: "publichealthInvolvement",
+          name: "publichealthInvolvement",
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: data.publichealthInvolvement == "Yes"
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: data.publichealthInvolvement == "No"
+            }
+          ]
+        }) }}
+
+      
+
+        {{ button({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
+

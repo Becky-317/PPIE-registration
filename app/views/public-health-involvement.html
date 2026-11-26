@@ -21,10 +21,13 @@
         {{ radios({
           fieldset: {
             legend: {
-              text: "Would you like to receive relevant opportunities to help shape research?",
+              text: "Would you like to receive public involvement opportunities in addition to health and care research studies?",
               size: "l",
               isPageHeading: true
             }
+          },
+          hint: {
+          text: "This is optional. If you select ‘No’, you will still be matched to health and care research studies and can choose to take part in them."
           },
           name: "Public health involvement",
           idPrefix: "publichealthInvolvement",
@@ -48,9 +51,9 @@
         {% set dummyNhsNumber = "999 123 4567" %}
 
         {% call details({
-        summary: "How can I help shape research?"
+        summary: "What are public involvement opportunities?"
         }) %}
-          <p>You can share your experiences to help research teams understand what matters to patients and the public. This is also known as ‘public involvement in research.’ By doing this, you will improve research and make a difference to the way health and social care is provided in the future.  </p>
+          <p>Public involvement opportunities involve sharing your experience about a health condition, caring for someone, or using social care services with the research team. You can help make research more relevant and useful to patients, carers and the public. This is different from taking part in a study to test a new treatment or care option. A few examples of what this could involve are joining advisory panels, reviewing documents, being a consultant or advisor, or being interviewed about your experience.</p>
         {% endcall %}
 
 

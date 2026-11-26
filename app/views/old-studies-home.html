@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <h1 class="nhsuk-heading-l">My Opportunities</h1>
+    <div class="nhsuk-grid-row">
+      
+      <div class="nhsuk-grid-column-two-thirds">
+        {% from "search-input/macro.njk" import searchInput %}
+
+
+        
+
+{{ searchInput({
+  label: {
+    text: "You can search for the opportunities you have submitted",
+    size: "s"
+  },
+  name: "Opportunity search",
+  id: "opportunity-search",
+  width: 20
+}) }}
+      </div>
+      <div class="nhsuk-grid-column-one-third nhsuk-u-text-align-right">
+        {% from "button/macro.njk" import button %}
+        {{ button({
+        text: "Submit a new opportunity",
+        href: "opportunities-start-page.html"
+        }) }} 
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <hr class="nhsuk-section-break nhsuk-section-break--xl nhsuk-section-break--visible">
+  {{ card({
+      heading: {
+        text: "No opportunities available",
+        size: "m"
+      },
+      description: "You don't currently have any opportunities available. Submit an opportunity to get started.",
+      href: "opportunities-start-page.html",
+      clickable: true,
+      variant: "secondary"
+    }) }}
+</div>
+
+
+
+{% endblock %}

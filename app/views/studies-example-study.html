@@ -1,6 +1,29 @@
 {% extends "layout.html" %}
-{% extends "layout.html" %}
 {% from "tag/macro.njk" import tag %}
+{% from "button/macro.njk" import button %}
+{% from "breadcrumb/macro.njk" import breadcrumb %}
+{% from "button/macro.njk" import button %}
+{% from "inset-text/macro.njk" import insetText %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+{% set dummyNhsNumber = "999 123 4567" %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "studies-home-study-submitted.html",
+        text: "Opportunities home"
+      },
+      {
+        href: "#",
+        text: "Example study"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+
 
 {% block content %}
 
@@ -16,7 +39,7 @@
       </div>
     </div>
     <div class="nhsuk-u-padding-bottom-5"></div>
-    <h1 class="nhsuk-heading-l">This is an example study</h1>
+    <h1 class="nhsuk-heading-l">This is an example opportuniy</h1>
   </div>
 </div>
 <div class="nhsuk-u-padding-bottom-5"></div>
@@ -37,10 +60,6 @@
     {% endcall %}
   </li>
 </ul>
-    {% from "button/macro.njk" import button %}
-    {{ button({
-      text: "Update recruitment total"
-    }) }}
 </div>
   <div class="nhsuk-grid-column-one-third">
     <ul class="nhsuk-grid-row nhsuk-card-group">
@@ -74,7 +93,19 @@
   </li>
 </ul>
         </div>
-      </div>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-button-group">
+      {{ button({
+        text: "Update recruitment total"
+      }) }}
+
+      {{ button({
+        text: "Preview opportunity webpage",
+        variant: "secondary"
+      }) }}
     </div>
   </div>
 </div>
@@ -87,25 +118,25 @@
 
 {% set pastDayContent %}
   {{ table({
-    caption: "Study invites",
+    caption: "Opportunity invites",
     head: [
       {
-        text: "Study invites",
+        text: "Opportunity invites",
         format: "text"
       },
       {
-        text: "Volunteers recruited",
+        text: "Participants recruited",
         format: "number"
       },
       {
-        text: "Date volunteers recruited",
+        text: "Date participants recruited",
         format: "date"
       }
     ],
     rows: [
       [
         {
-          text: "There haven't been any communications about this study sent yet"
+          text: "There haven't been any communications about this opportunity sent yet"
         },
         {
           text: "0",
@@ -122,7 +153,7 @@
 
 {% set pastWeekContent %}
   {{ table({
-    caption: "Study details",
+    caption: "Opportunity details",
     rows: [
       [
         {
@@ -175,7 +206,7 @@
 
 {% set pastMonthContent %}
   {{ table({
-    caption: "Advert",
+    caption: "Opportunity webpage",
   
     rows: [
       [
@@ -344,21 +375,21 @@ Have experienced depressive symptoms after a fracture.",
 {{ tabs({
   items: [
     {
-      label: "Study invites",
+      label: "Opportunity invites",
       id: "study-invites",
       panel: {
         html: pastDayContent
       }
     },
     {
-      label: "Study details",
+      label: "Opportunity details",
       id: "study-details",
       panel: {
         html: pastWeekContent
       }
     },
     {
-      label: "Advert",
+      label: "Opportunity webpage",
       id: "advert",
       panel: {
         html: pastMonthContent

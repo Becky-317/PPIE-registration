@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+{% from "card/macro.njk" import card %}
+{% from "breadcrumb/macro.njk" import breadcrumb %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block content %}
+<div class="nhsuk-width-container">
+  <main class="nhsuk-main-wrapper" id="maincontent">
+    <h1>Information for researchers</h1>
+    <h2>Find and recruit volunteers using our registry</h2>
+    <body><p>Over a million people take part in research across the UK every year - but finding suitable participants is not always easy.</p>
+    <p>Be Part of Research now provides the first UK-wide registry for all health and care specialties. It gives researchers and sponsors free and easy access to research-engaged volunteers from across the UK - enabling study teams to recruit and find volunteers more quickly and effectively.</p>
+    </body>
+    <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+    <h3>How does the service work?</h3>
+    <body><p>Our service supports a broad range of research - from lifestyle questionnaires to clinical trials - taking place at local hospitals, GP surgeries, in care or community settings or at home.</p>
+    <p>When registering for an account, volunteers consent to be contacted about research opportunities in their region. They choose the conditions and research areas that interest them, or sign up as a healthy volunteer.</p>
+    <p>We then select the most suitable volunteers for your study or opportunity and invite them to take part via email. The volunteer then decides if they want to take part.</p>
+    <p>Our system enables us to identify volunteers for your study through a wide range of data including age, ethnic group, sex, location and condition.</p>
+    </body>
+    <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+    <h3>Types of research that can use the service</h3>
+    <h4>Health and care research studies</h4>
+    <body><p>Ideal studies will have broad interest and a number of recruiting sites across the country.</p>
+          <p>Studies must:</p>
+          <ul>
+            <li>be funded or supported by the NIHR. This includes studies on <a href="#">NIHR Research Delivery Network Portfolio</a></li>
+            <li>have Research Ethics Committee approval to use the service as a recruitment tool</li>
+          </ul>
+    <h5>Information about ethics approval process</h5>
+    <p>You need to mention Be Part of Research as a recruitment tool in your ethics approval submission.</p>
+    <p>If you didn’t explicitly mention that your study will be using Be Part of Research for recruitment in your initial submission, then you will need to submit a minor modification to include this.</p>
+    <p>We can offer guidance on the modification process, and provide HRA-approved wording to be included in your study documents. For further information, you can email us at <a href="#">bepartofresearch-volunteerservice@nihr.ac.uk</a></p>
+    </body>
+    <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+    <h4>Public involvement opportunities</h4>
+    <body><p>This involves participants sharing their experiences of a health condition, caring for someone, or using social care services with the research team. This can help shape your study design and how research is carried out. You can <a href="#">read more about these opportunities</a>.</p>
+          <p>To be eligible to use the service, the opportunity you submit must:</p>
+          <ul>
+            <li>be related to health and care research</li>
+            <li>involve members of the public to inform study design and delivery</li>
+            <li>originate from academia, a government agency, or a charity</li>
+          </ul>
+    </body>
+    <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+    <h3>How we can support you</h3>
+    <body><p>Our dedicated team will work closely with you through each step to recruit volunteers into your study. The team has proven experience of supporting researchers with recruiting volunteers to studies from registries, including the NHS COVID-19 Vaccine Research Registry and Join Dementia Research.</p></body>
+    <h4>Health and care research studies</h4>
+    <body><p>To begin, <a href = "#">you can fill in this application form</a>. We will contact you within five working days to discuss your study. Once your study is approved to use the service, we will signpost volunteers to your study when you are ready.</p>
+      <h5>Using a pre-screener for your study</h5>
+      <body><p>The NIHR has launched the Recruit registry volunteer (RRV) platform. The RRV helps researchers find eligible participants for their study using a pre-screener.</p>
+      <p>You can use the pre-screener to include or exclude volunteers based on:</p></body>
+          <ul>
+            <li>health conditions</a></li>
+            <li>medication</li>
+          </ul>
+        <p>You may be suitable to use the pre-screener if your study either:</p>
+         <ul>
+            <li>has one research location in the UK</li>
+            <li>has one person screening or recruiting using Be Part of Research</li>
+            <li>originate from academia, a government agency, or a charity</li>
+          </ul>
+        </body>
+    <h4>Public involvement opportunities</h4>
+    <body><p>Follow the steps outlined <a href="#"> this guide</a>. </p>
+      <p>When you submit an opportunity, a webpage outlining the details of your opportunity is generated. We will contact you to let you know if your submission has been approved, or whether we need more information.</p>
+
+<p>If approved, your opportunity’s details will be shown on the website. This is to provide an example to our users the different types of opportunities they can take part in.</p>
+
+<p>Once approved, we will also find participants for your opportunity. An email invitation will be sent to them, linking the opportunity webpage. If they choose to take part, they will get in touch with you.</p>
+    </body>
+  </main>
+</div>
+
+
+{% endblock %}

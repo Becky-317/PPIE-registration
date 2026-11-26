@@ -40,10 +40,14 @@ router.post('/studies-email-address.html', function (req, res) {
 })
 
 
-router.post('/opportunities-study-title-description.html', function (req, res) {
+router.post('/opportunities-study-title.html', function (req, res) {
   req.session.data.studyTitle = req.body.studyTitle
-  req.session.data.Description = req.body.Description
-  return res.redirect('/opportunities-point-of-contact.html')
+  return res.redirect('/opportunities-study-description.html')
+})
+
+router.post('/opportunities-study-description.html', function (req, res) {
+  req.session.data.description = req.body['data.Description']
+  return res.redirect('/opportunities-opportunity-type.html')
 })
 
 router.post('/opportunities-point-of-contact.html', function (req, res) {
@@ -106,7 +110,7 @@ router.post('/opportunities-inclusion-check-answer.html', function (req, res) {
 
 router.post('/opportunities-what-will-the-participant-do.html', function (req, res) {
   req.session.data['what-will-the-participant-do'] = req.body['what-will-the-participant-do']
-  return res.redirect('/opportunities-travel-inconvenience-costs.html')
+  return res.redirect('/opportunities-incentives.html')
 })
 
 router.post('/opportunities-inclusion-criteria.html', function (req, res) {
@@ -128,13 +132,13 @@ router.post('/opportunities-inclusion-criteria.html', function (req, res) {
 
 router.post('/opportunities-travel-inconvenience-costs.html', function (req, res) {
   req.session.data.reimbursed = req.body.reimbursed
-  return res.redirect('/opportunities-incentives.html')
+  return res.redirect('/opportunities-additional-links.html')
 })
 
 router.post('/opportunities-incentives.html', function (req, res) {
   req.session.data.incentiveOffered = req.body.incentiveOffered
   req.session.data.incentiveDetails = req.body.incentiveDetails
-  return res.redirect('/opportunities-additional-links.html')
+  return res.redirect('/opportunities-travel-inconvenience-costs.html')
 })
 
 router.post('/opportunities-additional-links.html', function (req, res) {

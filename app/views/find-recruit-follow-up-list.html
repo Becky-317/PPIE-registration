@@ -193,26 +193,24 @@
   <div class="nhsuk-grid-column-two-thirds">
      {{ card({
       heading: {
-        text: "Be Part of Research - public involvement opportunities",
-        size: "m"
-      },
-      description: "You can recruit and work with volunteers to understand their experiences of health conditions, caring for others, or using social care services. This is also known as ‘public involvement in research.’ It help you with design and plan your study. It can also help you understand how you can best apply and share the results of your research.",
-      href: "studies-start-page.html",
-      clickable: true,
-      variant: "secondary"
-    }) }},
-    {{ card({
-      heading: {
         text: "Be Part of Research registry",
         size: "m"
       },
-      description: "Be Part of Research registry is the only UK-wide volunteer registry for all health and care specialties. Volunteers choose the conditions and research areas that interest them, or sign up as a healthy volunteer and consent to be contacted about research opportunities in their region. The Be Part of Research registry gives researchers and sponsors free and easy access to research-engaged volunteers from across the UK - enabling study teams to recruit more quickly and effectively.
-
-      Be Part of Research registry supports a broad range of research - from lifestyle questionnaires to clinical trials - taking place in local hospitals, GP surgeries, in care or community settings or at home.",
+      description: {
+        html: "
+          <p>Be Part of Research is a UK-wide registry for all health and care specialties. It gives researchers and study teams free access to research-engaged volunteers. Volunteers choose the conditions and research areas that interest them when they create their account. They are matched to studies and opportunities based on their interests. They also consent to be contacted about research opportunities near them.</p>
+          <p>There are two types of research that are supported:</p>
+          <ul class=\"nhsuk-list nhsuk-list--bullet\">
+            <li><strong>Health and care research studies</strong> - This can involve health research, public health research and social care research. Our service supports a broad range of research - from lifestyle questionnaires to clinical trials - taking place at local hospitals, GP surgeries, in care or community settings or at home.</li>
+            <li><strong>Public involvement opportunities</strong> - This involves participants sharing their experiences of a health condition, caring for someone, or using social care services with the research team. This can help shape your study design and how research is carried out. Examples include joining advisory panels, reviewing documents, being a consultant or advisor, or being interviewed about your experience.</li>
+          </ul>
+        "
+      },
       href: "studies-start-page.html",
       clickable: true,
       variant: "secondary"
     }) }},
+   
      {{ card({
       heading: {
         text: "CPRD - Clinical Practice Research Datalink",
