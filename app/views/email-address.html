@@ -30,7 +30,9 @@
           name: "Email address"
         }) }}
 
-      
+      {{ button({
+        text: "Continue"
+        }) }}
       </form>
       {% from "details/macro.njk" import details %}
 
@@ -42,9 +44,7 @@
       <p>We use your email address to create your account and contact you about relevant research opportunities.</p>
   
     {% endcall %}
-        {{ button({
-        text: "Continue"
-        }) }}
+        
     </div>
   </div>
 {% endblock %}
